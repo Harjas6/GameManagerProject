@@ -21,7 +21,7 @@ public class Game {
     private boolean owned;
 
     // MODIFIES: this
-    // EFFECTS: creates game with given inputs
+    // EFFECTS: creates game with each parameter being assignemed to its matching field.
     public Game(String name, double hoursPlayed, int difficulty, int ranking,
                 Genre genre, double price, boolean owned) {
         this.name = name;
@@ -114,7 +114,7 @@ public class Game {
         return price;
     }
 
-    // REQUIRES : price >= 0
+    // REQUIRES: price >= 0
     // MODIFIES: this
     // EFFECTS: Changes games price to price
     public void editPrice(double price) {
@@ -126,7 +126,7 @@ public class Game {
     }
 
     // MODIFIES: this
-    // EFFECTS: FLips current owned value tp the opposite
+    // EFFECTS: FLips current owned value t0 the opposite
     public void changeOwned() {
         this.owned = !this.owned;
     }
