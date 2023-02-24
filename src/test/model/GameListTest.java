@@ -58,9 +58,9 @@ public class GameListTest {
         expensive2 = new Game("Rachet and Clank", 1, 1,
                 5, PLATFORMER, 10000, false);
 
-        empty = new GameList(0);
+        empty = new GameList();
 
-        allGames = new GameList(100);
+        allGames = new GameList();
         allGames.addGame(actionGame);
         allGames.addGame(rpgGame);
         allGames.addGame(openWorldGame);
@@ -68,7 +68,7 @@ public class GameListTest {
         allGames.addGame(platformGame);
         allGames.addGame(sportGame);
 
-        notByName = new GameList(1000);
+        notByName = new GameList();
         notByName.addGame(rpgGame);
         notByName.addGame(sportGame);
         notByName.addGame(sportGame3);
@@ -78,11 +78,9 @@ public class GameListTest {
 
     @Test
     void testGameList() {
-        GameList constructorTester = new GameList(100);
+        GameList constructorTester = new GameList();
         assertEquals(0, empty.getSize());
-        assertEquals(0, empty.getBudget());
         assertEquals(0, constructorTester.getSize());
-        assertEquals(100, constructorTester.getBudget());
     }
 
     @Test
@@ -352,28 +350,21 @@ public class GameListTest {
     @Test
     public void testCanBuy() {
         assertEquals(5, notByName.getSize());
-        assertEquals(3, notByName.canBuy().size());
-        assertTrue(notByName.canBuy().contains(rpgGame));
+        assertEquals(3, notByName.canBuy(1000).size());
+        assertTrue(notByName.canBuy(1000).contains(rpgGame));
         assertEquals(5, notByName.getSize());
         assertEquals(0, empty.getSize());
-        assertEquals(0, empty.canBuy().size());
+        assertEquals(0, empty.canBuy(0).size());
         empty.addGame(sportGame4);
         empty.addGame(sportGame3);
-        assertEquals(0, empty.canBuy().size());
+        assertEquals(0, empty.canBuy(1).size());
         assertEquals(2, empty.getSize());
         empty.clearList();
         empty.addGame(expensive);
         empty.addGame(expensive2);
-        assertEquals(0, empty.canBuy().size());
+        assertEquals(0, empty.canBuy(100).size());
         assertEquals(2, empty.getSize());
 
-    }
-
-    @Test
-    void testChangeBudget() {
-        assertEquals(1000, notByName.getBudget());
-        notByName.changeBudget(10.5);
-        assertEquals(10.5, notByName.getBudget());
     }
 
     @Test

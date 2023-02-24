@@ -14,20 +14,17 @@ import java.util.List;
 public class GameList {
 
     private List<Game> gameList;
-    private double budget;
 
-    public GameList(double budget) {
+    public GameList() {
         this.gameList = new ArrayList<>();
-        this.budget = budget;
     }
 
 
     // EFFECTS: Produces a list of games that can be bought according to budget
-    public List<Game> canBuy() {
-        double spendingMoney = this.budget;
+    public List<Game> canBuy(double budget) {
         List<Game> underBudget = new ArrayList<>();
         for (Game game : gameList) {
-            if (!game.isOwned() && (spendingMoney >= game.getPrice())) {
+            if (!game.isOwned() && (budget >= game.getPrice())) {
                 underBudget.add(game);
             }
         }
@@ -159,6 +156,7 @@ public class GameList {
         gameList.clear();
     }
 
+    // REQUIRES: list must not be empty, i must be within index range
     // MODIFIES: this
     // EFFECTS: removes game at index i from gameList
     public void removeGame(int i) {
@@ -197,18 +195,5 @@ public class GameList {
                     + "\n\n";
         }
         return games;
-    }
-
-    // EFFECTS: returns budget of gameList
-    public double getBudget() {
-        return budget;
-    }
-
-    // REQUIRES: budget >= 0
-    // MODIFIES: this
-    // EFFECTS: changes budget to new budget
-    public void changeBudget(double newBudget) {
-        this.budget = newBudget;
-
     }
 }
