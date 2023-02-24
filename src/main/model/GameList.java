@@ -13,7 +13,7 @@ import java.util.List;
 
 public class GameList {
 
-    private final List<Game> gameList;
+    private List<Game> gameList;
     private double budget;
 
     public GameList(double budget) {
