@@ -13,7 +13,7 @@ import java.util.List;
 
 public class GameList {
 
-    private List<Game> gameList;
+    private final List<Game> gameList;
     private double budget;
 
     public GameList(double budget) {
@@ -210,10 +210,10 @@ public class GameList {
     // EFFECTS:
     public String produceGames() {
         String games = "";
-        for (Game game: gameList) {
-            games += "Name: " + game.getName() + ", Price: $" + game.getPrice() +  ", Owned? " + game.isOwned()
-                    + "\n" +  "Genre: " + game.getGenre() + ", Hours Played: " + game.getHoursPlayed()
-                    + ", Difficulty Level: " + game.getDifficulty() +  "\n" +  "Personal Ranking: " + game.getRanking()
+        for (Game game : gameList) {
+            games += "Name: " + game.getName() + ", Price: $" + game.getPrice() + ", Owned? " + game.isOwned()
+                    + "\n" + "Genre: " + game.getGenre() + ", Hours Played: " + game.getHoursPlayed()
+                    + ", Difficulty Level: " + game.getDifficulty() + "\n" + "Personal Ranking: " + game.getRanking()
                     + "\n\n";
         }
         return games;
