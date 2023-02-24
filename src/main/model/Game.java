@@ -19,6 +19,7 @@ public class Game {
     private Genre genre;
     private double price;
     private boolean owned;
+
     // MODIFIES: this
     // EFFECTS: creates game with given inputs
     public Game(String name, double hoursPlayed, int difficulty, int ranking,
