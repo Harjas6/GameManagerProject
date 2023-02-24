@@ -7,13 +7,17 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+// GameList is a List of the games a user can input alongside a budget that is >= 0.
+// Based off the individual facets of inputted games
+// user can sort, get averages from the list, and see what games are purchasable according to the budget
+
 public class GameList {
 
     private List<Game> gameList;
     private double budget;
 
     public GameList(double budget) {
-        this.gameList = new ArrayList<Game>();
+        this.gameList = new ArrayList<>();
         this.budget = budget;
     }
 
@@ -22,7 +26,7 @@ public class GameList {
     // EFFECTS:
     public List<Game> canBuy() {
         double spendingMoney = this.budget;
-        List<Game> underBudget = new ArrayList<Game>();
+        List<Game> underBudget = new ArrayList<>();
         for (Game game : gameList) {
             if (!game.isOwned() && (spendingMoney >= game.getPrice())) {
                 underBudget.add(game);
@@ -162,7 +166,7 @@ public class GameList {
     // REQUIRES:
     // MODIFIES:
     // EFFECTS:
-    public void sortByPlayed() {
+    public void sortByOwned() {
         gameList.sort(new OwnedComparator());
     }
 
@@ -172,6 +176,10 @@ public class GameList {
     public void sortByOwnedReverse() {
         gameList.sort(new OwnedComparator());
         Collections.reverse(gameList);
+    }
+
+    public void clearList() {
+        gameList.clear();
     }
 
     // REQUIRES:
@@ -201,11 +209,11 @@ public class GameList {
     // MODIFIES:
     // EFFECTS:
     public String produceGames() {
-        String games = " ";
+        String games = "";
         for (Game game: gameList) {
-            games += "Name: " + game.getName() + " Price: " + game.getPrice() +  " Owned? " + game.isOwned()
-                    + "\n" +  "Genre: " + game.getGenre() + " Hours Played: " + game.getHoursPlayed()
-                    + "Difficulty Level: " + game.getDifficulty() +  "\n" +  "Personal Ranking: " + game.getRanking()
+            games += "Name: " + game.getName() + ", Price: $" + game.getPrice() +  ", Owned? " + game.isOwned()
+                    + "\n" +  "Genre: " + game.getGenre() + ", Hours Played: " + game.getHoursPlayed()
+                    + ", Difficulty Level: " + game.getDifficulty() +  "\n" +  "Personal Ranking: " + game.getRanking()
                     + "\n\n";
         }
         return games;

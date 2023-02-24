@@ -1,64 +1,16 @@
 package model;
 
 // Game is representative of a real-life game, with fields representing individuals
-// facets of/about the game.
+// facets of/about the game. Name represents the title of the Game,
+// hoursPlayed representing the amount of hours the user has played - must be >= 0
+// difficulty represents the users perceived difficulty of the game between [0,10]
+// ranking represents where the user would rank the game according to personal prefernce
+// this must be > 0, can have identical ranking to convey a tie
+// genre represents what genre the game belongs in from predetermined constants
+// price represent current price of game >= 0
+// owned is true if user owns game false otherwise
+
 public class Game {
-
-    public enum Genre {
-        SPORT(0) {
-            @Override
-            public String toString() {
-                return "Sports Game";
-            }
-        },
-        SHOOTER(2) {
-            @Override
-            public String toString() {
-                return "1st/3rd Person Shooter";
-            }
-        },
-        RPG(2) {
-            @Override
-            public String toString() {
-                return "Role-playing Game";
-            }
-        },
-        PLATFORMER(3) {
-            @Override
-            public String toString() {
-                return "Platforming Game";
-            }
-        },
-        ACTADV(4) {
-            @Override
-            public String toString() {
-                return "Action/Adventure Game";
-            }
-        },
-        OPENWORLD(5) {
-            @Override
-            public String toString() {
-                return "Open-World Game";
-            }
-        };
-
-        private final int num;
-
-        Genre(int i) {
-            this.num = i;
-        }
-
-        public static Genre getGenre(int i) {
-            for (Genre genre : Genre.values()) {
-                if (i == genre.num) {
-                    return genre;
-                }
-            }
-            throw new IllegalArgumentException("Please use one of the specified numbers");
-        }
-
-    }
-
 
     private String name;
     private double hoursPlayed;
@@ -67,7 +19,6 @@ public class Game {
     private Genre genre;
     private double price;
     private boolean owned;
-
     // MODIFIES: this
     // EFFECTS: creates game with given inputs
     public Game(String name, double hoursPlayed, int difficulty, int ranking,
@@ -111,7 +62,7 @@ public class Game {
     // REQUIRES: name to be at least one character
     // MODIFIES: this
     // EFFECTS: changes name of game
-    public void setName(String name) {
+    public void editName(String name) {
         this.name = name;
     }
 
@@ -122,7 +73,7 @@ public class Game {
     // REQUIRES: hoursPlayed to be > 0
     // MODIFIES: this
     // EFFECTS: Changes games hours played
-    public void setHoursPlayed(double hoursPlayed) {
+    public void editHoursPlayed(double hoursPlayed) {
         this.hoursPlayed = hoursPlayed;
     }
 
@@ -143,7 +94,7 @@ public class Game {
 
     // REQUIRES: ranking > 0
     // MODIFIES: this
-    // EFFECTS: Chnages games ranking
+    // EFFECTS: Changes games ranking to ranking
     public void editRanking(int ranking) {
         this.ranking = ranking;
     }
@@ -152,10 +103,9 @@ public class Game {
         return genre;
     }
 
-
     // MODIFIES: this
-    // EFFECTS: Chnages games genre
-    public void setGenre(Genre genre) {
+    // EFFECTS: Changes games genre to genre
+    public void editGenre(Genre genre) {
         this.genre = genre;
     }
 
@@ -165,7 +115,7 @@ public class Game {
 
     // REQUIRES : price >= 0
     // MODIFIES: this
-    // EFFECTS: Chnages games price
+    // EFFECTS: Changes games price to price
     public void editPrice(double price) {
         this.price = price;
     }
@@ -175,12 +125,47 @@ public class Game {
     }
 
     // MODIFIES: this
-    // EFFECTS: Chnages games owned value
+    // EFFECTS: FLips current owned value tp the opposite
     public void changeOwned() {
-        if (this.owned) {
-            this.owned = false;
-        } else {
-            this.owned = true;
+        this.owned = !this.owned;
+    }
+
+    public enum Genre {
+        SPORT {
+            @Override
+            public String toString() {
+                return "Sports Game";
+            }
+        },
+        SHOOTER {
+            @Override
+            public String toString() {
+                return "1st/3rd Person Shooter";
+            }
+        },
+        RPG {
+            @Override
+            public String toString() {
+                return "Role-playing Game";
+            }
+        },
+        PLATFORMER {
+            @Override
+            public String toString() {
+                return "Platforming Game";
+            }
+        },
+        ACTADV {
+            @Override
+            public String toString() {
+                return "Action/Adventure Game";
+            }
+        },
+        OPENWORLD {
+            @Override
+            public String toString() {
+                return "Open-World Game";
+            }
         }
     }
 }

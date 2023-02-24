@@ -9,10 +9,6 @@ class GameTest {
 
     private Game actionGame;
     private Game rpgGame;
-    private Game openWorldGame;
-    private Game shootingGame;
-    private Game platformGame;
-    private Game sportGame;
 
 
     @BeforeEach
@@ -21,14 +17,16 @@ class GameTest {
                 2, ACTADV, 1, true);
         rpgGame = new Game("God Of War", 100, 9,
                 1, RPG, 90, false);
-        openWorldGame = new Game("Elden Ring", 95, 10,
-                3, OPENWORLD, 50, false);
-        shootingGame = new Game("Call Of Duty", 250, 3,
-                4, SHOOTER, 0, true);
-        platformGame = new Game("Rachet and Clank", 10, 1,
-                5, PLATFORMER, 15, false);
-        sportGame = new Game("FIFA 22", 48, 0,
-                6, SPORT, 40, true);
+    }
+
+    @Test
+    void testToString() {
+        assertEquals("Action/Adventure Game", ACTADV.toString());
+        assertEquals("Open-World Game", OPENWORLD.toString());
+        assertEquals("Platforming Game", PLATFORMER.toString());
+        assertEquals("1st/3rd Person Shooter", SHOOTER.toString());
+        assertEquals("Sports Game", SPORT.toString());
+        assertEquals("Role-playing Game", RPG.toString());
     }
 
     @Test
@@ -57,7 +55,28 @@ class GameTest {
         assertEquals(0, actionGame.getPrice());
         assertFalse(actionGame.changePrice(-0.1));
         assertEquals(0, actionGame.getPrice());
+    }
 
+    @Test
+    void testEditName() {
+        assertEquals("Uncharted 4", actionGame.getName());
+        actionGame.editName("Legend of Zelda");
+        assertEquals("Legend of Zelda", actionGame.getName());
+    }
+
+    @Test
+    void testEditGenre() {
+        assertEquals(RPG, rpgGame.getGenre());
+        rpgGame.editGenre(SPORT);
+        assertEquals(SPORT, rpgGame.getGenre());
+
+    }
+
+    @Test
+    void testEditHoursPlayed() {
+        assertEquals(1, actionGame.getHoursPlayed());
+        actionGame.editHoursPlayed(10.5);
+        assertEquals(10.5, actionGame.getHoursPlayed());
     }
 
     @Test
@@ -66,6 +85,7 @@ class GameTest {
         actionGame.editRanking(3);
         assertEquals(3, actionGame.getRanking());
     }
+
     @Test
     void testEditDifficulty() {
         assertEquals(3, actionGame.getDifficulty());
@@ -75,9 +95,9 @@ class GameTest {
 
     @Test
     void testEditPrice() {
-        assertEquals(1,actionGame.getPrice());
+        assertEquals(1, actionGame.getPrice());
         actionGame.editPrice(10.01);
-        assertEquals(10.01,actionGame.getPrice());
+        assertEquals(10.01, actionGame.getPrice());
     }
 
     @Test
