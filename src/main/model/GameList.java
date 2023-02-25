@@ -54,11 +54,27 @@ public class GameList {
         return total / 100;
     }
 
-    // EFFECTS: Produces average price in gameList to two decimal places
-    public double averagePrice() {
+    // EFFECTS: Produces average price of unowned games in gameList to two decimal places
+    public double averageUnownedPrice() {
+        double total = 0;
+        int counter = 0;
+        for (Game game : gameList) {
+            if (!game.isOwned()) {
+                total += game.getPrice();
+                counter += 1;
+            }
+        }
+        total = (total / counter);
+        total = (int) (total * 100);
+        return total / 100;
+    }
+
+    // EFFECTS: returns average price of all games in list
+    public double averagePriceAll() {
         double total = 0;
         for (Game game : gameList) {
             total += game.getPrice();
+
         }
         total = (total / gameList.size());
         total = (int) (total * 100);
@@ -79,12 +95,14 @@ public class GameList {
 
 
     // EFFECTS: Sorts gameList according to the order
-    // the genre enumeration was decalred with the first one declared at the top
+    // the genre enumeration was declared with the first one declared at the top
+    // Also is the genres alphabetical order
     public void sortByGenre() {
         gameList.sort(new GenreComparator());
     }
 
     // EFFECTS: Sorts gameList in reverse order of the genre declaration in enumeration
+    // also the reverse alphabetical order for the genre
     public void sortByGenreReverse() {
         sortByGenre();
         Collections.reverse(gameList);
@@ -188,12 +206,15 @@ public class GameList {
     // of the games fields being listed out
     public String produceGames() {
         String games = "";
+        int i = 0;
         for (Game game : gameList) {
-            games += "Name: " + game.getName() + ", Price: $" + game.getPrice() + ", Owned? " + game.isOwned()
+            games += "\n\nGame# " + i + " "
+                    + ", Name: " + game.getName() + ", Price: $" + game.getPrice() + ", Owned? " + game.isOwned()
                     + "\n" + "Genre: " + game.getGenre() + ", Hours Played: " + game.getHoursPlayed()
-                    + ", Difficulty Level: " + game.getDifficulty() + "\n" + "Personal Ranking: " + game.getRanking()
-                    + "\n\n";
+                    + ", Difficulty Level: " + game.getDifficulty() + "\n" + "Personal Ranking: " + game.getRanking();
+            i++;
         }
         return games;
     }
+
 }

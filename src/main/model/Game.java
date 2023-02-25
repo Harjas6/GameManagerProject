@@ -21,8 +21,8 @@ public class Game {
     private boolean owned;
 
     // MODIFIES: this
-    // EFFECTS: creates game with each parameter being assignemed to its matching field.
-    public Game(String name, double hoursPlayed, int difficulty, int ranking,
+    // EFFECTS: creates game with each parameter being assigned to its matching field.
+    public Game(String name, double hoursPlayed, double difficulty, int ranking,
                 Genre genre, double price, boolean owned) {
         this.name = name;
         this.hoursPlayed = hoursPlayed;
@@ -41,18 +41,6 @@ public class Game {
             return true;
         }
         this.hoursPlayed -= i;
-        return false;
-    }
-
-    // REQUIRES: price + i >= 0
-    // MODIFIES: this
-    // EFFECTS: Changes the price by i as long as the change does
-    // not allow price to fall below zero
-    public boolean changePrice(double i) {
-        if ((this.price += i) >= 0) {
-            return true;
-        }
-        this.price -= i;
         return false;
     }
 
@@ -132,30 +120,6 @@ public class Game {
     }
 
     public enum Genre {
-        SPORT {
-            @Override
-            public String toString() {
-                return "Sports Game";
-            }
-        },
-        SHOOTER {
-            @Override
-            public String toString() {
-                return "1st/3rd Person Shooter";
-            }
-        },
-        RPG {
-            @Override
-            public String toString() {
-                return "Role-playing Game";
-            }
-        },
-        PLATFORMER {
-            @Override
-            public String toString() {
-                return "Platforming Game";
-            }
-        },
         ACTADV {
             @Override
             public String toString() {
@@ -166,6 +130,30 @@ public class Game {
             @Override
             public String toString() {
                 return "Open-World Game";
+            }
+        },
+        PLATFORMER {
+            @Override
+            public String toString() {
+                return "Platforming Game";
+            }
+        },
+        RPG {
+            @Override
+            public String toString() {
+                return "Role-playing Game";
+            }
+        },
+        SHOOTER {
+            @Override
+            public String toString() {
+                return "1st/3rd Person Shooter";
+            }
+        },
+        SPORT {
+            @Override
+            public String toString() {
+                return "Sports Game";
             }
         }
     }

@@ -15,8 +15,8 @@ public class GenreComparatorTest {
     private Game rpgGame;
     private Game openWorldGame;
     private Game shootingGame;
-    private Game platformGame;
-    private Game sportGame;
+    private Game sportGame1;
+    private Game sportGame2;
     private GenreComparator comp;
 
     @BeforeEach
@@ -29,18 +29,18 @@ public class GenreComparatorTest {
                 3, OPENWORLD, 50, false);
         shootingGame = new Game("Call Of Duty", 250, 3,
                 4, SHOOTER, 0, true);
-        platformGame = new Game("Rachet and Clank", 10, 1,
+        sportGame1 = new Game("NHL 22", 10, 1,
                 5, SPORT, 15, false);
-        sportGame = new Game("FIFA 22", 48, 0,
+        sportGame2 = new Game("FIFA 22", 48, 0,
                 6, SPORT, 40, true);
         comp = new GenreComparator();
     }
 
     @Test
     void compareTest() {
-        assertEquals(2, comp.compare(actionGame,rpgGame));
-        assertEquals(-4, comp.compare(shootingGame,openWorldGame));
-        assertEquals(0, comp.compare(sportGame,platformGame));
+        assertEquals(-3, comp.compare(actionGame,rpgGame));
+        assertEquals(3, comp.compare(shootingGame,openWorldGame));
+        assertEquals(0, comp.compare(sportGame2, sportGame1));
     }
 }
 

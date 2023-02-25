@@ -120,11 +120,31 @@ public class GameListTest {
     }
 
     @Test
-    void testAveragePrice() {
+    void testAverageUnownedPrice() {
+        assertEquals(0, empty.averageUnownedPrice());
         assertEquals(0, empty.getSize());
-        assertEquals(0, empty.averagePrice());
+        assertEquals(47.03, allGames.averageUnownedPrice());
         assertEquals(6, allGames.getSize());
-        assertEquals(32.01, allGames.averagePrice());
+
+        GameList allOwned = new GameList();
+        allOwned.addGame(actionGame);
+        allOwned.addGame(sportGame);
+        allOwned.addGame(shootingGame);
+        assertEquals(0, allOwned.averageUnownedPrice());
+
+    }
+    @Test
+    void testAveragePrice() {
+        assertEquals(0, empty.averagePriceAll());
+        assertEquals(0, empty.getSize());
+        assertEquals(32.01, allGames.averagePriceAll());
+        assertEquals(6, allGames.getSize());
+
+        GameList allOwned = new GameList();
+        allOwned.addGame(actionGame);
+        allOwned.addGame(sportGame);
+        allOwned.addGame(shootingGame);
+        assertEquals(16.99, allOwned.averagePriceAll());
 
     }
     @Test
@@ -194,14 +214,14 @@ public class GameListTest {
         assertEquals(8, allGames.getSize());
         assertEquals(actionGame, allGames.getGame(0));
         allGames.sortByGenre();
-        assertEquals(sportGame, allGames.getGame(0));
-        assertEquals(sportGame4, allGames.getGame(1));
-        assertEquals(shootingGame, allGames.getGame(2));
-        assertEquals(rpgGame, allGames.getGame(3));
-        assertEquals(platformGame, allGames.getGame(4));
-        assertEquals(actionGame, allGames.getGame(5));
-        assertEquals(actionGame2, allGames.getGame(6));
-        assertEquals(openWorldGame, allGames.getGame(7));
+        assertEquals(sportGame, allGames.getGame(6));
+        assertEquals(sportGame4, allGames.getGame(7));
+        assertEquals(shootingGame, allGames.getGame(5));
+        assertEquals(rpgGame, allGames.getGame(4));
+        assertEquals(platformGame, allGames.getGame(3));
+        assertEquals(actionGame, allGames.getGame(0));
+        assertEquals(actionGame2, allGames.getGame(1));
+        assertEquals(openWorldGame, allGames.getGame(2));
 
         empty.sortByGenre();
         assertEquals(0, empty.getSize());
@@ -214,14 +234,17 @@ public class GameListTest {
         assertEquals(8, allGames.getSize());
         assertEquals(actionGame, allGames.getGame(0));
         allGames.sortByGenreReverse();
-        assertEquals(sportGame, allGames.getGame(7));
-        assertEquals(sportGame4, allGames.getGame(6));
-        assertEquals(shootingGame, allGames.getGame(5));
-        assertEquals(rpgGame, allGames.getGame(4));
-        assertEquals(platformGame, allGames.getGame(3));
-        assertEquals(actionGame, allGames.getGame(2));
-        assertEquals(actionGame2, allGames.getGame(1));
-        assertEquals(openWorldGame, allGames.getGame(0));
+        assertEquals(sportGame, allGames.getGame(1));
+        assertEquals(sportGame4, allGames.getGame(0));
+        assertEquals(shootingGame, allGames.getGame(2));
+        assertEquals(rpgGame, allGames.getGame(3));
+        assertEquals(platformGame, allGames.getGame(4));
+        assertEquals(actionGame, allGames.getGame(7));
+        assertEquals(actionGame2, allGames.getGame(6));
+        assertEquals(openWorldGame, allGames.getGame(5));
+
+        empty.sortByGenreReverse();
+        assertEquals(0, empty.getSize());
     }
 
     @Test
@@ -372,17 +395,16 @@ public class GameListTest {
         assertEquals("", empty.produceGames());
         empty.addGame(actionGame2);
         empty.addGame(rpgGame);
-        assertEquals("Name: Uncharted 3, Price: $1.0, Owned? true\n" +
+        assertEquals("\n\nGame# 0 " + ", Name: Uncharted 3, Price: $1.0, Owned? true\n" +
                 "Genre: Action/Adventure Game, Hours Played: 1.0, Difficulty Level: 3.0\n" +
-                "Personal Ranking: 2\n" +
-                "\n" +
-                "Name: God Of War, Price: $90.0, Owned? false\n" +
+                "Personal Ranking: 2"
+                + "\n\nGame# 1 " + ", Name: God Of War, Price: $90.0, Owned? false\n" +
                 "Genre: Role-playing Game, Hours Played: 100.0, Difficulty Level: 9.0\n" +
-                "Personal Ranking: 1" + "\n\n", empty.produceGames());
+                "Personal Ranking: 1", empty.produceGames());
         empty.removeGame(1);
-        assertEquals("Name: Uncharted 3, Price: $1.0, Owned? true\n" +
+        assertEquals("\n\nGame# 0 " + ", Name: Uncharted 3, Price: $1.0, Owned? true\n" +
                 "Genre: Action/Adventure Game, Hours Played: 1.0, Difficulty Level: 3.0\n" +
-                "Personal Ranking: 2\n\n", empty.produceGames());
+                "Personal Ranking: 2", empty.produceGames());
 
     }
 }

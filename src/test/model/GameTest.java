@@ -44,20 +44,6 @@ class GameTest {
     }
 
     @Test
-    public void testChangePrice() {
-        assertTrue(actionGame.changePrice(1));
-        assertEquals(2, actionGame.getPrice());
-        assertTrue(actionGame.changePrice(0.5));
-        assertEquals(2.5, actionGame.getPrice());
-        assertTrue(actionGame.changePrice(-2));
-        assertEquals(0.5, actionGame.getPrice());
-        assertTrue(actionGame.changePrice(-0.5));
-        assertEquals(0, actionGame.getPrice());
-        assertFalse(actionGame.changePrice(-0.1));
-        assertEquals(0, actionGame.getPrice());
-    }
-
-    @Test
     void testEditName() {
         assertEquals("Uncharted 4", actionGame.getName());
         actionGame.editName("Legend of Zelda");
