@@ -181,6 +181,7 @@ public class GameList {
         gameList.remove(i);
     }
 
+    // REQUIRES: i is within list's index
     // EFFECTS: produces game at index i
     public Game getGame(int i) {
         return gameList.get(i);

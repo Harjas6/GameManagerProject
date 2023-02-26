@@ -5,15 +5,19 @@ import model.GameList;
 
 import java.util.Scanner;
 
+// Game Manager app
 public class GameManagerApp {
 
     private GameList gameList;
     private Scanner scanner;
 
+    // EFFECTS: Runs app
     public GameManagerApp() {
         runGameManager();
     }
 
+    // MODIFIES: this:
+    // EFFECTS: proccesses user input
     private void runGameManager() {
         boolean running = true;
         String input;
@@ -35,6 +39,8 @@ public class GameManagerApp {
 
     }
 
+    // MODIFIES: this:
+    // EFFECTS: executes user inputs
     private void executeMainMenuInput(String input) {
         if (input.equals("0")) {
             viewList();
@@ -51,6 +57,7 @@ public class GameManagerApp {
         }
     }
 
+    // EFFECTS: processes user input
     private void produceStats() {
         boolean running = true;
         String input;
@@ -65,6 +72,7 @@ public class GameManagerApp {
         }
     }
 
+    // EFFECTS: produces stats based off input
     private void executeStatsInput(String input) {
         if (input.equals("0")) {
             System.out.println(averagePrice());
@@ -77,6 +85,7 @@ public class GameManagerApp {
         }
     }
 
+    // EFFECTS: calculates average price based off input
     private double averagePrice() {
         String input;
         boolean running = true;
@@ -97,20 +106,24 @@ public class GameManagerApp {
         return result;
     }
 
+    // EFFECTS: calculates average difficulty
     private double averageDifficulty() {
         return gameList.averageDifficulty();
     }
 
+    // EFFECTS: calculates average hours played
     private double averageHoursPlayed() {
         return gameList.averageHours();
     }
 
+    // EFFECTS: displays menu options for stats
     private void displayStatsMenu() {
         System.out.println("Press a number to proceed");
         System.out.println("[0] Average price of unowned games\n[1] "
                 + "Average difficulty of games\n[2] Average hours played of games\n[B] Go back");
     }
 
+    // EFFECTS: prodcues unowned games under user defined budget
     private void underBudgetGames() {
         String temp;
         double input;
@@ -120,6 +133,8 @@ public class GameManagerApp {
         System.out.println(gameList.canBuy(input));
     }
 
+    // MODIFIES: this:
+    // EFFECTS: proccesses input to sort list
     private void sortList() {
         String input;
         boolean running = true;
@@ -134,6 +149,8 @@ public class GameManagerApp {
         }
     }
 
+    // MODIFIES: this:
+    // EFFECTS: sorts list based off input
     private void executeSortInput(String input) {
         if (input.equals("0")) {
             sortByName();
@@ -154,6 +171,8 @@ public class GameManagerApp {
         }
     }
 
+    // MODIFIES: this:
+    // EFFECTS: prints out sorted list by price
     private void sortByPrice() {
         String input;
         boolean running = true;
@@ -173,6 +192,8 @@ public class GameManagerApp {
         viewList();
     }
 
+    // MODIFIES: this:
+    // EFFECTS: prints out sorted list by difficulty
     private void sortByDifiiculty() {
         String input;
         boolean running = true;
@@ -193,6 +214,8 @@ public class GameManagerApp {
 
     }
 
+    // MODIFIES: this:
+    // EFFECTS: prints out sorted list by if it is owned
     private void sortByOwned() {
         String input;
         boolean running = true;
@@ -212,6 +235,8 @@ public class GameManagerApp {
         viewList();
     }
 
+    // MODIFIES: this:
+    // EFFECTS: prints out sorted list by genre
     private void sortByGenre() {
         String input;
         boolean running = true;
@@ -233,6 +258,8 @@ public class GameManagerApp {
 
     }
 
+    // MODIFIES: this:
+    // EFFECTS: prints out sorted list by hours played
     private void sortByHoursPlayed() {
         String input;
         boolean running = true;
@@ -253,6 +280,8 @@ public class GameManagerApp {
 
     }
 
+    // MODIFIES: this:
+    // EFFECTS: prints out sorted list by ranking
     private void sortByRank() {
         String input;
         boolean running = true;
@@ -272,6 +301,8 @@ public class GameManagerApp {
         viewList();
     }
 
+    // MODIFIES: this:
+    // EFFECTS: prints out sorted list by name
     private void sortByName() {
         String input;
         boolean running = true;
@@ -291,6 +322,7 @@ public class GameManagerApp {
         viewList();
     }
 
+    // EFFECTS: prints menu for sorting features
     private void displaySortMenu() {
         System.out.println("Press a number to proceed.");
         System.out.println("[0] Sort by name.\n[1] Sort by rank\n[2] Sort by hours played"
@@ -299,6 +331,8 @@ public class GameManagerApp {
     }
 
 
+    // MODIFIES: this:
+    // EFFECTS: processes inout for editing list features
     private void editList() {
         boolean running = true;
         String input;
@@ -313,6 +347,8 @@ public class GameManagerApp {
         }
     }
 
+    // MODIFIES: this:
+    // EFFECTS: processes user input for editing list features
     private void executeEditListInput(String input) {
         if (input.equals("0")) {
             addGame();
@@ -325,6 +361,9 @@ public class GameManagerApp {
         }
     }
 
+    // REQUIRES: user input is an integer whose value is within the list index values
+    // MODIFIES: this:
+    // EFFECTS: removes game
     private void removeGame() {
         int input;
         String temp;
@@ -341,6 +380,8 @@ public class GameManagerApp {
         }
     }
 
+    // MODIFIES: this:
+    // EFFECTS: edits a games fields
     private void editGame() {
         int input;
         String temp;
@@ -365,6 +406,8 @@ public class GameManagerApp {
         }
     }
 
+    // MODIFIES: this:
+    // EFFECTS: edits fields user selects
     private void editField(Game game) {
         boolean name;
         boolean hoursPlayed;
@@ -384,6 +427,8 @@ public class GameManagerApp {
         changeFields(name, hoursPlayed, difficulty, ranking, genre, price, owned, game);
     }
 
+    // MODIFIES: this:
+    // EFFECTS: changes fields user selects
     private void changeFields(boolean name, boolean hoursPlayed, boolean difficulty,
                               boolean ranking, boolean genre, boolean price, boolean owned, Game game) {
         if (name) {
@@ -410,11 +455,13 @@ public class GameManagerApp {
         System.out.println("Fields have been changed");
     }
 
+    // EFFECTS: gets games name off input and returns it
     private String userSelectName() {
         System.out.println("What is the name of the game?");
         return scanner.nextLine();
     }
 
+    // EFFECTS: gets hours plaued  off input and returns it
     private double userSelectHoursPlayed() {
         double hoursPlayed;
         String temp;
@@ -424,6 +471,7 @@ public class GameManagerApp {
         return hoursPlayed;
     }
 
+    // EFFECTS: gets difficulty name off input and returns it
     private double userSelectDifficulty() {
         double difficulty;
         String temp;
@@ -434,6 +482,7 @@ public class GameManagerApp {
 
     }
 
+    // EFFECTS: gets ranking name off input and returns it
     private int userSelectRanking() {
         int ranking;
         String temp;
@@ -444,6 +493,7 @@ public class GameManagerApp {
         return ranking;
     }
 
+    // EFFECTS: gets price off input and returns it
     private double userSelectPrice() {
         double price;
         String temp;
@@ -453,6 +503,7 @@ public class GameManagerApp {
         return price;
     }
 
+    // EFFECTS: gets if game is owned or not off input and returns it
     private boolean changeOwned() {
         String input;
         boolean running = true;
@@ -472,6 +523,7 @@ public class GameManagerApp {
         return result;
     }
 
+    // EFFECTS: asks user if price should be changed and returns it
     private boolean changePrice() {
         String input;
         boolean running = true;
@@ -492,6 +544,7 @@ public class GameManagerApp {
         return result;
     }
 
+    // EFFECTS: asks user if genre should be changed and returns it
     private boolean changeGenre() {
         String input;
         boolean running = true;
@@ -512,6 +565,7 @@ public class GameManagerApp {
         return result;
     }
 
+    // EFFECTS: asks user if ranking should be changed and returns it
     private boolean changeRanking() {
         String input;
         boolean running = true;
@@ -532,6 +586,7 @@ public class GameManagerApp {
         return result;
     }
 
+    // EFFECTS: asks user if difficulty should be changed and returns it
     private boolean changeDifficulty() {
         String input;
         boolean running = true;
@@ -552,6 +607,7 @@ public class GameManagerApp {
         return result;
     }
 
+    // EFFECTS: asks user if hours played should be changed and returns it
     private boolean changeHoursPlayed() {
         String input;
         boolean running = true;
@@ -572,6 +628,8 @@ public class GameManagerApp {
         return result;
     }
 
+
+    // EFFECTS: asks user if name should be changed and returns it
     private boolean changeName() {
         String input;
         boolean running = true;
@@ -591,10 +649,13 @@ public class GameManagerApp {
         return result;
     }
 
+    // MODIFIES: this:
+    // EFFECTS: adds game to list
     private void addGame() {
         gameList.addGame(makeGame());
     }
 
+    // Makes game based off user input and returns it
     private Game makeGame() {
         String name;
         double hoursPlayed;
@@ -615,6 +676,7 @@ public class GameManagerApp {
         return (new Game(name, hoursPlayed, difficulty, ranking, genre, price, owned));
     }
 
+    // EFFECTS: user picks if game is owned and returns it
     private boolean userSelectOwned() {
         String input;
         boolean owned = false;
@@ -626,7 +688,6 @@ public class GameManagerApp {
                 owned = true;
                 running = false;
             } else if (input.equals("n")) {
-                owned = false;
                 running = false;
             } else {
                 System.out.println("Not a valid input");
@@ -635,6 +696,8 @@ public class GameManagerApp {
         return owned;
     }
 
+    // REQUIRES: user input to be an integer
+    // EFFECTS: user picks game genre and returns it
     private Game.Genre userSelectGenre() {
         Game.Genre genre = null;
         boolean running = true;
@@ -654,12 +717,14 @@ public class GameManagerApp {
         return genre;
     }
 
+    // EFFECTS: displays selct genre menu
     private void displaySelectGenreMenu() {
         System.out.println("Press a number to select a genre for the game.\n");
         System.out.println("[0] Sports Game\n[1] 1st/3rd Person Shooter\n[2] Role-playing Game"
                 + "\n[3] Platforming Game\n[4] Action/Adventure Game\n[5] Open-World Game");
     }
 
+    //  picks a genre based off inout and returns it
     private Game.Genre proccessGenreSelect(int input) {
         Game.Genre genre = Game.Genre.SPORT;
         if (input == 0) {
@@ -678,22 +743,27 @@ public class GameManagerApp {
         return genre;
     }
 
+    // EFFECTS: displays edit menu
     private void displayEditMenu() {
         System.out.println("Press a number to proceed.");
         System.out.println("[0] Add a game\n[1] Edit a games fields\n[2] Remove a game\n"
                 + "[B] Go Back");
     }
 
+    // EFFECTS: prints out current list
     private void viewList() {
         System.out.println(gameList.produceGames());
     }
 
+    // EFFECTS: displays main menu
     private void displayMainMenu() {
         System.out.println("\nPress a number to proceed.");
         System.out.println("[0] View current games in list.\n[1] Edit games in list\n[2] Sort list"
                 + "\n[3] Games under budget\n[4] Find statistics\n[Q] Quit");
     }
 
+    // MODIFIES: this
+    // EFFECTS: creates a gamelist and scanner
     private void intialize() {
         gameList = new GameList();
         scanner = new Scanner(System.in);
