@@ -1,14 +1,14 @@
 package ui;
 
 import model.Game;
-import model.GameList;
+import model.GameManager;
 
 import java.util.Scanner;
 
 // Game Manager app
 public class GameManagerApp {
 
-    private GameList gameList;
+    private GameManager gameList;
     private Scanner scanner;
 
     // EFFECTS: Runs app
@@ -380,7 +380,7 @@ public class GameManagerApp {
         }
     }
 
-    // MODIFIES: this:
+    // MODIFIES: this
     // EFFECTS: edits a games fields
     private void editGame() {
         int input;
@@ -717,7 +717,7 @@ public class GameManagerApp {
         return genre;
     }
 
-    // EFFECTS: displays selct genre menu
+    // EFFECTS: displays select genre menu
     private void displaySelectGenreMenu() {
         System.out.println("Press a number to select a genre for the game.\n");
         System.out.println("[0] Sports Game\n[1] 1st/3rd Person Shooter\n[2] Role-playing Game"
@@ -765,7 +765,7 @@ public class GameManagerApp {
     // MODIFIES: this
     // EFFECTS: creates a gamelist and scanner
     private void intialize() {
-        gameList = new GameList();
+        gameList = new GameManager();
         scanner = new Scanner(System.in);
     }
 }

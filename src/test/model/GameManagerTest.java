@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import static model.Game.Genre.*;
 
-public class GameListTest {
+public class GameManagerTest {
     private Game actionGame;
     private Game actionGame2;
     private Game rpgGame;
@@ -19,9 +19,9 @@ public class GameListTest {
     private Game sportGame3;
     private Game sportGame4;
 
-    private GameList empty;
-    private GameList allGames;
-    private GameList notByName;
+    private GameManager empty;
+    private GameManager allGames;
+    private GameManager notByName;
     private Game expensive;
     private Game expensive2;
 
@@ -58,9 +58,9 @@ public class GameListTest {
         expensive2 = new Game("Rachet and Clank", 1, 1,
                 5, PLATFORMER, 10000, false);
 
-        empty = new GameList();
+        empty = new GameManager();
 
-        allGames = new GameList();
+        allGames = new GameManager();
         allGames.addGame(actionGame);
         allGames.addGame(rpgGame);
         allGames.addGame(openWorldGame);
@@ -68,7 +68,7 @@ public class GameListTest {
         allGames.addGame(platformGame);
         allGames.addGame(sportGame);
 
-        notByName = new GameList();
+        notByName = new GameManager();
         notByName.addGame(rpgGame);
         notByName.addGame(sportGame);
         notByName.addGame(sportGame3);
@@ -78,7 +78,7 @@ public class GameListTest {
 
     @Test
     void testGameList() {
-        GameList constructorTester = new GameList();
+        GameManager constructorTester = new GameManager();
         assertEquals(0, empty.getSize());
         assertEquals(0, constructorTester.getSize());
     }
@@ -126,7 +126,7 @@ public class GameListTest {
         assertEquals(47.03, allGames.averageUnownedPrice());
         assertEquals(6, allGames.getSize());
 
-        GameList allOwned = new GameList();
+        GameManager allOwned = new GameManager();
         allOwned.addGame(actionGame);
         allOwned.addGame(sportGame);
         allOwned.addGame(shootingGame);
@@ -140,7 +140,7 @@ public class GameListTest {
         assertEquals(32.01, allGames.averagePriceAll());
         assertEquals(6, allGames.getSize());
 
-        GameList allOwned = new GameList();
+        GameManager allOwned = new GameManager();
         allOwned.addGame(actionGame);
         allOwned.addGame(sportGame);
         allOwned.addGame(shootingGame);

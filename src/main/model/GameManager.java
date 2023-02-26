@@ -11,15 +11,16 @@ import java.util.List;
 // Based off the individual facets of inputted games
 // user can sort, get averages from the list, and see what games are purchasable according to the budget
 
-public class GameList {
+public class GameManager {
 
     private List<Game> gameList;
 
-    public GameList() {
+    public GameManager() {
         this.gameList = new ArrayList<>();
     }
 
 
+    // REQUIRES: budget to be > 0
     // EFFECTS: Produces a list of games that can be bought according to budget
     public List<Game> canBuy(double budget) {
         List<Game> underBudget = new ArrayList<>();

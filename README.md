@@ -21,7 +21,7 @@ so this app will help me with that, especially track money spent.
 - As a user, I would like to add a new game, to a list of games.
 - As a user, I would like to be able to increment
 the hours spent on a game multiple times (ex. be able to add to a running total).
-- As a user, I would like to be able to change features of a game without
+- As a user, I would like to be able to change fields of a game without
 needing to delete and re-enter the game (edit games fields within the list).
 - As a user, I would like to be able to games sorted by all the info I put about them (name, genre, hours, etc.)
 - As a user, I would like to see the averages hours played/prices/difficulty of the games in the list

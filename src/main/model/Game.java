@@ -1,13 +1,12 @@
 package model;
 
 // Game is representative of a real-life game, with fields representing individuals
-// facets of/about the game. Name represents the title of the Game,
-// hoursPlayed representing the amount of hours the user has played - must be >= 0
+// facets of/about the game. Name represents the title of the Game
+// hoursPlayed representing the amount of hours the user has played
 // difficulty represents the users perceived difficulty of the game between [0,10]
-// ranking represents where the user would rank the game according to personal prefernce
-// this must be > 0, can have identical ranking to convey a tie
+// ranking represents where the user would rank the game according to personal preference
 // genre represents what genre the game belongs in from predetermined constants
-// price represent current price of game >= 0
+// price represent current price of game
 // owned is true if user owns game false otherwise
 
 public class Game {
@@ -20,6 +19,7 @@ public class Game {
     private double price;
     private boolean owned;
 
+    // REQUIRES: hoursPlayed to be >=0, difficukty to be [0,10], ranking > 0, price > 0
     // MODIFIES: this
     // EFFECTS: creates game with each parameter being assigned to its matching field.
     public Game(String name, double hoursPlayed, double difficulty, int ranking,
@@ -114,7 +114,7 @@ public class Game {
     }
 
     // MODIFIES: this
-    // EFFECTS: FLips current owned value t0 the opposite
+    // EFFECTS: FLips current owned value to the opposite
     public void changeOwned() {
         this.owned = !this.owned;
     }
