@@ -44,6 +44,7 @@ public class Game {
         return false;
     }
 
+    // EFFECTS: returns name
     public String getName() {
         return name;
     }
@@ -55,6 +56,7 @@ public class Game {
         this.name = name;
     }
 
+    // EFFECTS: hours played
     public double getHoursPlayed() {
         return hoursPlayed;
     }
@@ -66,6 +68,7 @@ public class Game {
         this.hoursPlayed = hoursPlayed;
     }
 
+    // EFFECTS: return difficulty
     public double getDifficulty() {
         return difficulty;
     }
@@ -77,6 +80,7 @@ public class Game {
         this.difficulty = difficulty;
     }
 
+    // EFFECTS: return ranking
     public int getRanking() {
         return ranking;
     }
@@ -88,6 +92,7 @@ public class Game {
         this.ranking = ranking;
     }
 
+    // EFFECTS: return genre
     public Genre getGenre() {
         return genre;
     }
@@ -98,6 +103,7 @@ public class Game {
         this.genre = genre;
     }
 
+    // EFFECTS: return price
     public double getPrice() {
         return price;
     }
@@ -109,6 +115,7 @@ public class Game {
         this.price = price;
     }
 
+    // EFFECTS: return owned
     public boolean isOwned() {
         return owned;
     }
@@ -118,6 +125,7 @@ public class Game {
     public void changeOwned() {
         this.owned = !this.owned;
     }
+
 
     public enum Genre {
         ACTADV {
