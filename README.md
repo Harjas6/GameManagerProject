@@ -29,3 +29,8 @@ needing to delete and re-enter the game (edit games fields within the list).
 
 - As a user, when I quit the program, I want to be reminded to save my list to  a file and the choice to.
 - As a user, when I start the application, I want to be given the option to load my saved list from file.
+
+
+
+*URL for JsonSerializationDemo
+https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo

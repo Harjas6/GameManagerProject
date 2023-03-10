@@ -395,14 +395,14 @@ public class GameManagerTest {
         assertEquals("", empty.produceGames());
         empty.addGame(actionGame2);
         empty.addGame(rpgGame);
-        assertEquals("\n\nGame# 0 " + ", Name: Uncharted 3, Price: $1.0, Owned? true\n" +
+        assertEquals("\n\nGame# 1 " + ", Name: Uncharted 3, Price: $1.0, Owned? true\n" +
                 "Genre: Action/Adventure Game, Hours Played: 1.0, Difficulty Level: 3.0\n" +
                 "Personal Ranking: 2"
-                + "\n\nGame# 1 " + ", Name: God Of War, Price: $90.0, Owned? false\n" +
+                + "\n\nGame# 2 " + ", Name: God Of War, Price: $90.0, Owned? false\n" +
                 "Genre: Role-playing Game, Hours Played: 100.0, Difficulty Level: 9.0\n" +
                 "Personal Ranking: 1", empty.produceGames());
         empty.removeGame(1);
-        assertEquals("\n\nGame# 0 " + ", Name: Uncharted 3, Price: $1.0, Owned? true\n" +
+        assertEquals("\n\nGame# 1 " + ", Name: Uncharted 3, Price: $1.0, Owned? true\n" +
                 "Genre: Action/Adventure Game, Hours Played: 1.0, Difficulty Level: 3.0\n" +
                 "Personal Ranking: 2", empty.produceGames());
 

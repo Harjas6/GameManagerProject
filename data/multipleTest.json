@@ -1,0 +1,29 @@
+{"games": [
+    {
+        "difficulty": 1,
+        "hours": 345,
+        "price": 2,
+        "owned": true,
+        "name": "Harj",
+        "genre": "PLATFORMER",
+        "ranking": 1
+    },
+    {
+        "difficulty": 23,
+        "hours": 456,
+        "price": 12,
+        "owned": false,
+        "name": "NOD",
+        "genre": "ACTADV",
+        "ranking": 87
+    },
+    {
+        "difficulty": 5435,
+        "hours": 23,
+        "price": 334,
+        "owned": true,
+        "name": "GOD",
+        "genre": "SPORT",
+        "ranking": 23
+    }
+]}

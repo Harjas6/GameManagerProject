@@ -206,12 +206,15 @@ public class GameManager implements Writable {
         return gameList.contains(game);
     }
 
+    public List<Game> getGameList() {
+        return gameList;
+    }
 
     // EFFECTS: produces string of all the games with each
     // of the games fields being listed out
     public String produceGames() {
         String games = "";
-        int i = 0;
+        int i = 1;
         for (Game game : gameList) {
             games += "\n\nGame# " + i + " "
                     + ", Name: " + game.getName() + ", Price: $" + game.getPrice() + ", Owned? " + game.isOwned()
@@ -230,7 +233,7 @@ public class GameManager implements Writable {
         return json;
     }
 
-    //INSPIRED FROM JsonSerializationDEMO
+    // INSPIRED/MODELLED FROM JSON SERIALIZATION DEMO
     // EFFECTS: returns games in this game manager as a JSON array
     private JSONArray gamesToJson() {
         JSONArray jsonArray = new JSONArray();

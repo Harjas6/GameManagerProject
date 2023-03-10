@@ -41,9 +41,18 @@ public class GameManagerApp {
                 executeMainMenuInput(input);
             }
         }
+        System.out.println("Do you want to save before quitting? [Y/N]");
+        input = scanner.nextLine().toLowerCase();
+        lastChanceToSave(input);
         scanner.close();
         System.out.println("\nHave a good day!");
 
+    }
+
+    private void lastChanceToSave(String input) {
+        if (input.equals("y")) {
+            saveGames();
+        }
     }
 
     // MODIFIES: this:
@@ -188,19 +197,19 @@ public class GameManagerApp {
     // MODIFIES: this:
     // EFFECTS: sorts list based off input
     private void executeSortInput(String input) {
-        if (input.equals("0")) {
+        if ("0".equals(input)) {
             sortByName();
-        } else if (input.equals("1")) {
+        } else if ("1".equals(input)) {
             sortByRank();
-        } else if (input.equals("2")) {
+        } else if ("2".equals(input)) {
             sortByHoursPlayed();
-        } else if (input.equals("3")) {
+        } else if ("3".equals(input)) {
             sortByGenre();
-        } else if (input.equals("4")) {
+        } else if ("4".equals(input)) {
             sortByOwned();
-        } else if (input.equals("5")) {
+        } else if ("5".equals(input)) {
             sortByDifiiculty();
-        } else if (input.equals("6")) {
+        } else if ("6".equals(input)) {
             sortByPrice();
         } else {
             System.out.println("Not a valid input");
@@ -392,9 +401,16 @@ public class GameManagerApp {
             editGame();
         } else if (input.equals("2")) {
             removeGame();
+        } else if (input.equals("3")) {
+            clearList();
         } else {
             System.out.println("Not a valid input");
         }
+    }
+
+    private void clearList() {
+        gameList.clearList();
+        System.out.println("List cleared");
     }
 
     // REQUIRES: user input is an integer whose value is within the list index values
@@ -403,13 +419,13 @@ public class GameManagerApp {
     private void removeGame() {
         int input;
         String temp;
-        System.out.println("What game# would you like to remove? If none press [B]");
         viewList();
+        System.out.println("What game# would you like to remove? If none press [B]");
         temp = scanner.nextLine();
         if (temp.equals("b")) {
             System.out.println("Canceling removal");
         } else {
-            input = Integer.parseInt(temp);
+            input = Integer.parseInt(temp) - 1;
             gameList.removeGame(input);
             System.out.println("Game removed");
             viewList();
@@ -783,7 +799,7 @@ public class GameManagerApp {
     private void displayEditMenu() {
         System.out.println("Press a number to proceed.");
         System.out.println("[0] Add a game\n[1] Edit a games fields\n[2] Remove a game\n"
-                + "[B] Go Back");
+                + "[3] Clear list\n[B] Go Back");
     }
 
     // EFFECTS: prints out current list

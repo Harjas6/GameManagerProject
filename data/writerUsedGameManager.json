@@ -1,0 +1,20 @@
+{"games": [
+    {
+        "difficulty": 9,
+        "hours": 100,
+        "price": 90,
+        "owned": false,
+        "name": "God Of War",
+        "genre": "RPG",
+        "ranking": 1
+    },
+    {
+        "difficulty": 3,
+        "hours": 1,
+        "price": 1,
+        "owned": true,
+        "name": "Uncharted 4",
+        "genre": "ACTADV",
+        "ranking": 2
+    }
+]}
