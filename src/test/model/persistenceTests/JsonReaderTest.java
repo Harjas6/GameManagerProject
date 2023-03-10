@@ -20,7 +20,7 @@ class JsonReaderTest extends JsonTest {
     void testReaderNonExistentFile() {
         JsonReader reader = new JsonReader("./data/garbageFile.json");
         try {
-            GameManager gm = reader.read();
+            reader.read();
             fail("IOException expected");
         } catch (IOException e) {
             // pass

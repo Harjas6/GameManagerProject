@@ -130,7 +130,7 @@ public class Game implements Writable {
     }
 
     // INSPIRED/MODELLED FROM JSON SERIALIZATION DEMO
-
+    // EFFECTS: Makes this a json obje
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();

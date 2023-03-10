@@ -12,7 +12,7 @@ import java.util.Scanner;
 // Game Manager app
 public class GameManagerApp {
 
-    private static final String JSON_STORE = "./data/gamemanager.json";
+    private static final String JSON_STORE = "./data/gameManager.json";
     private GameManager gameList;
     private Scanner scanner;
     private JsonWriter jsonWriter;
