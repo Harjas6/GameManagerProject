@@ -1,18 +1,25 @@
 package ui;
 
+import persistence.JsonReader;
+import persistence.JsonWriter;
 import model.Game;
 import model.GameManager;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 
 // Game Manager app
 public class GameManagerApp {
 
+    private static final String JSON_STORE = "./data/gamemanager.json";
     private GameManager gameList;
     private Scanner scanner;
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
 
     // EFFECTS: Runs app
-    public GameManagerApp() {
+    public GameManagerApp() throws FileNotFoundException {
         runGameManager();
     }
 
@@ -52,8 +59,37 @@ public class GameManagerApp {
             underBudgetGames();
         } else if (input.equals("4")) {
             produceStats();
+        } else if (input.equals("5")) {
+            saveGames();
+        } else if (input.equals("6")) {
+            loadGames();
         } else {
             System.out.println("Not a valid input");
+        }
+    }
+
+    //INSPIRED FROM JSON SERIALIZATION DEMO
+    // EFFECTS: saves the gameList to file
+    private void saveGames() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(gameList);
+            jsonWriter.close();
+            System.out.println("Saved games to " + JSON_STORE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE);
+        }
+    }
+
+    // INSPIRED FROM JSON SERIALIZATION DEMO
+    // MODIFIES: this
+    // EFFECTS: loads gameList from file
+    private void loadGames() {
+        try {
+            gameList = jsonReader.read();
+            System.out.println("Loaded games from " + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE);
         }
     }
 
@@ -759,7 +795,8 @@ public class GameManagerApp {
     private void displayMainMenu() {
         System.out.println("\nPress a number to proceed.");
         System.out.println("[0] View current games in list.\n[1] Edit games in list\n[2] Sort list"
-                + "\n[3] Games under budget\n[4] Find statistics\n[Q] Quit");
+                + "\n[3] Games under budget\n[4] Find statistics\n[5] Save current games in list\n"
+                + "[6] Load games from previous file\n[Q] Quit");
     }
 
     // MODIFIES: this
@@ -767,6 +804,8 @@ public class GameManagerApp {
     private void intialize() {
         gameList = new GameManager();
         scanner = new Scanner(System.in);
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
     }
 }
 

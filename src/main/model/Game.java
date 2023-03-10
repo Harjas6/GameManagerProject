@@ -9,7 +9,10 @@ package model;
 // price represent current price of game
 // owned is true if user owns game false otherwise
 
-public class Game {
+import persistence.Writable;
+import org.json.JSONObject;
+
+public class Game implements Writable {
 
     private String name;
     private double hoursPlayed;
@@ -126,6 +129,18 @@ public class Game {
         this.owned = !this.owned;
     }
 
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", name);
+        json.put("hours", hoursPlayed);
+        json.put("difficulty", difficulty);
+        json.put("ranking", ranking);
+        json.put("genre", genre);
+        json.put("price", price);
+        json.put("owned", owned);
+        return json;
+    }
 
     public enum Genre {
         ACTADV {

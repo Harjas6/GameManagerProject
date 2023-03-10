@@ -1,7 +1,10 @@
 package model;
 
 
+import persistence.Writable;
 import model.comparators.*;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -11,7 +14,7 @@ import java.util.List;
 // Based off the individual facets of inputted games
 // user can sort, get averages from the list, and see what games are purchasable according to the budget
 
-public class GameManager {
+public class GameManager implements Writable {
 
     private List<Game> gameList;
 
@@ -219,4 +222,23 @@ public class GameManager {
         return games;
     }
 
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("games", gamesToJson());
+        return json;
+    }
+
+    //INSPIRED FROM JsonSerializationDEMO
+    // EFFECTS: returns games in this game manager as a JSON array
+    private JSONArray gamesToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Game g : gameList) {
+            jsonArray.put(g.toJson());
+        }
+
+        return jsonArray;
+    }
 }
