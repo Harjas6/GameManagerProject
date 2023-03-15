@@ -225,10 +225,10 @@ public class GameManagerApp {
             System.out.println("Sort highest price first or last? (F/L)");
             input = scanner.nextLine().toLowerCase();
             if (input.equals("f")) {
-                gameList.sortByName();
+                gameList.sortByPriceReverse();
                 running = false;
             } else if (input.equals("l")) {
-                gameList.sortByNameReverse();
+                gameList.sortByPrice();
                 running = false;
             } else {
                 System.out.println("Not a valid input");
