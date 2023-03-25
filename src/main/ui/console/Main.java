@@ -1,4 +1,6 @@
-package ui;
+package ui.console;
+
+import ui.console.GameManagerApp;
 
 import java.io.FileNotFoundException;
 
