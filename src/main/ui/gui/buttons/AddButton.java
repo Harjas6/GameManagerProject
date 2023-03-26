@@ -1,12 +1,9 @@
 package ui.gui.buttons;
 
 
-import model.GameManager;
-import ui.gui.AddGameInfoPanel;
 import ui.gui.PopUpAddWindow;
 
 import javax.swing.*;
-import java.awt.*;
 
 //  Class representing a button that adds game
 public class AddButton extends Button {

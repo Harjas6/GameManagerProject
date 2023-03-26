@@ -7,6 +7,7 @@ import java.awt.*;
 public class MainPanel extends JPanel {
 
     private JFrame frame;
+
     // EFFECTS: Makes the main Panel with the contents of GameManager
     public MainPanel(JFrame frame) {
         this.frame = frame;

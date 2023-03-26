@@ -1,7 +1,5 @@
 package ui.gui.buttons;
 
-import model.GameManager;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,7 +7,8 @@ import java.awt.event.ActionListener;
 // Abstracts class that represents a button
 public abstract class Button extends JButton implements ActionListener {
 
-protected JFrame mainFrame;
+    protected JFrame mainFrame;
+
     // EFFECTS: creates a button
     public Button(String text, JFrame mainFrame) {
         super(text);
