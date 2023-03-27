@@ -3,6 +3,9 @@ package model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 import static model.Game.Genre.*;
@@ -225,6 +228,16 @@ public class GameManagerTest {
 
         empty.sortByGenre();
         assertEquals(0, empty.getSize());
+    }
+
+    @Test
+    void testAddAll() {
+        GameManager games = new GameManager();
+        games.addGame(actionGame);
+        games.addGame(platformGame);
+        empty.addAll(games);
+        assertEquals(2, empty.getSize());
+
     }
 
     @Test

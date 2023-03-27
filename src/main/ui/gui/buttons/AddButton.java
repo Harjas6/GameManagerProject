@@ -1,6 +1,7 @@
 package ui.gui.buttons;
 
 
+import model.GameManager;
 import ui.gui.PopUpAddWindow;
 
 import javax.swing.*;
@@ -9,8 +10,8 @@ import javax.swing.*;
 public class AddButton extends Button {
 
     // EFFECTS: Creates button using superclass
-    public AddButton(JFrame frame) {
-        super("ADD GAME", frame);
+    public AddButton(GameManager gm) {
+        super("ADD GAME", gm);
     }
 
     // MODIFIES: gameManager
@@ -22,7 +23,7 @@ public class AddButton extends Button {
     }
 
     private void addGame() {
-        new PopUpAddWindow();
+        new PopUpAddWindow(this.gm);
 
 
     }

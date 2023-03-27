@@ -1,5 +1,6 @@
 package ui.gui;
 
+import model.GameManager;
 import ui.gui.buttons.*;
 import ui.gui.buttons.Button;
 
@@ -14,13 +15,14 @@ public class MenuPanel extends JPanel {
     private Button removeButton;
     private Button saveButton;
     private Button loadButton;
-    private JFrame frame;
+    private GameManager gm;
 
     // EFFECTS: Creates a new menu panel with associated buttons attached
-    public MenuPanel(JFrame frame) {
+    public MenuPanel(GameManager gm) {
+        this.gm = gm;
         initializeButtons();
         initializeMenuPanel();
-        this.frame = frame;
+
     }
 
     // EFFECTS: sets sizes of panel and color
@@ -32,13 +34,13 @@ public class MenuPanel extends JPanel {
 
     // EFFECTS: creates and adds all buttons
     private void initializeButtons() {
-        addButton = new AddButton(frame);
+        addButton = new AddButton(gm);
         this.add(addButton);
-        removeButton = new RemoveButton(frame);
+        removeButton = new RemoveButton(gm);
         this.add(removeButton);
-        saveButton = new SaveButton(frame);
+        saveButton = new SaveButton(gm);
         this.add(saveButton);
-        loadButton = new LoadButton(frame);
+        loadButton = new LoadButton(gm);
         this.add(loadButton);
     }
 

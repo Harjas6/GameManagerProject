@@ -6,11 +6,10 @@ import java.awt.*;
 // A panel that has all labels corresponding ot a games fields
 public class ColumnTitlePanel extends JPanel {
 
-    private JFrame frame;
+
 
     // EFFECTS: creates a panel with all labels added
-    public ColumnTitlePanel(JFrame frame) {
-        this.frame = frame;
+    public ColumnTitlePanel() {
         this.setLayout(new GridLayout(1, 7));
         intializeJLabel();
         this.setSize(100, 50);

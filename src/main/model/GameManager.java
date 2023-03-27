@@ -210,6 +210,10 @@ public class GameManager implements Writable {
         return gameList;
     }
 
+    public void addAll(GameManager list) {
+        gameList.addAll(list.getGameList());
+    }
+
     // EFFECTS: produces string of all the games with each
     // of the games fields being listed out
     public String produceGames() {

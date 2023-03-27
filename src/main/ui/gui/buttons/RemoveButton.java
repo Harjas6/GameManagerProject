@@ -8,8 +8,8 @@ import javax.swing.*;
 public class RemoveButton extends Button {
 
     // EFFECTS: Uses superclass to create a button
-    public RemoveButton(JFrame frame) {
-        super("REMOVE GAME", frame);
+    public RemoveButton(GameManager gm) {
+        super("REMOVE GAME", gm);
     }
 
 
@@ -17,6 +17,10 @@ public class RemoveButton extends Button {
     @Override
     protected void performButtonAction() {
         System.out.println("REMOVE");
+        removeGame();
+    }
+
+    private void removeGame() {
 
     }
 }

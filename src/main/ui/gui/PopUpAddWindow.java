@@ -2,6 +2,7 @@ package ui.gui;
 
 import model.Game;
 import model.Game.Genre.*;
+import model.GameManager;
 
 import javax.swing.*;
 
@@ -11,6 +12,7 @@ import java.awt.*;
 
 // A pop up window used to take in inputs to make a new game
 public class PopUpAddWindow extends JOptionPane {
+
 
     private Object[] objects;
     private TextFieldGenerator fields;
@@ -24,17 +26,13 @@ public class PopUpAddWindow extends JOptionPane {
     private JRadioButton notOwned;
     private ButtonGroup owned;
     private ButtonGroup genres;
-    // private JPanel genreButtonPanel;
-   // private JPanel ownedPanel;
+    private GameManager gm;
 
-    public PopUpAddWindow() {
+// EFFECTS: Creates a pop up window for users to create a game
+    public PopUpAddWindow(GameManager gm) {
         super("Create Game");
+        this.gm = gm;
         setSize(300,300);
-        //JPanel panel = new JPanel();
-        // JPanel titles = titlePanel();
-        // panel.setLayout(new BorderLayout());
-        // panel.add(titles, BorderLayout.WEST);
-        // panel.add(new AddGameInfoPanel());
         ownedButtons();
         genreButtons();
         fields = new TextFieldGenerator();
@@ -42,10 +40,12 @@ public class PopUpAddWindow extends JOptionPane {
                 "Price", fields.getPrice(), "Difficulty", fields.getDifficulty(),
                 "Rank", fields.getRank(), "Hours", fields.getHours(),
                 "Genre", action, openWorld, rpg, platformer, shooting, sports, "Owned", isOwned, notOwned};
-        runWindow();
         this.setVisible(true);
+        runWindow();
+
     }
 
+    // EFFECTS: shows dialog box to take in user input
     private void runWindow() {
         int option = showConfirmDialog(null, objects, "Create Game", JOptionPane.OK_CANCEL_OPTION);
         if (option == JOptionPane.OK_OPTION) {
@@ -53,15 +53,13 @@ public class PopUpAddWindow extends JOptionPane {
                      Double.parseDouble(fields.getDifficulty().getText()),Integer.parseInt(fields.getRank().getText()),
                      Game.Genre.valueOf(genres.getSelection().getActionCommand()),Double.parseDouble(fields.getPrice().getText()),
                     isOwned.isSelected());
-            System.out.println(g);
+            this.gm.addGame(g);
         }
-
-
     }
 
     // EFFECTS: makes genre selection buttons
     private void genreButtons() {
-         genres = new ButtonGroup();
+        genres = new ButtonGroup();
         sports = new JRadioButton("Sports Game");
         sports.setActionCommand("SPORT");
         shooting = new JRadioButton("1st/3rd Person Shooter");
@@ -80,15 +78,6 @@ public class PopUpAddWindow extends JOptionPane {
         genres.add(rpg);
         genres.add(shooting);
         genres.add(sports);
-//        genreButtonPanel = new JPanel(new GridLayout());
-//        genreButtonPanel.add(action);
-//        genreButtonPanel.add(openWorld);
-//        genreButtonPanel.add(platformer);
-//        genreButtonPanel.add(rpg);
-//        genreButtonPanel.add(shooting);
-//        genreButtonPanel.add(sports);
-//        genreButtonPanel.setVisible(true);
-
     }
 
     // EFFECTS: Makes owned radio buttons
@@ -98,9 +87,7 @@ public class PopUpAddWindow extends JOptionPane {
         notOwned = new JRadioButton("Not Owned");
         owned.add(isOwned);
         owned.add(notOwned);
-//        ownedPanel = new JPanel(new GridLayout());
-//        ownedPanel.add(isOwned);
-//        ownedPanel.add(notOwned);
+
     }
 }
 

@@ -1,5 +1,9 @@
 package ui.gui.buttons;
 
+import model.GameManager;
+import persistence.JsonReader;
+import persistence.JsonWriter;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -7,16 +11,16 @@ import java.awt.event.ActionListener;
 // Abstracts class that represents a button
 public abstract class Button extends JButton implements ActionListener {
 
-    protected JFrame mainFrame;
+
+    protected GameManager gm;
 
     // EFFECTS: creates a button
-    public Button(String text, JFrame mainFrame) {
+    public Button(String text, GameManager gm) {
         super(text);
+        this.gm = gm;
         this.addActionListener(this);
         this.setFocusable(false);
-        this.mainFrame = mainFrame;
     }
-
 
     protected abstract void performButtonAction();
 

@@ -24,10 +24,7 @@ public class TextFieldGenerator {
 
     // Creates all text fields with text fields
     public TextFieldGenerator() {
-       // setSize(300, 500);
-       // setLayout(new GridLayout(7,1));
         initializeFields();
-       // setVisible(true);
     }
 
     // EFFECTS: makes text fields and radio buttons
@@ -36,9 +33,7 @@ public class TextFieldGenerator {
         priceField();
         difficultyField();
         rankField();
-       // genreButtons();
         hoursField();
-       // ownedButtons();
     }
 
 
