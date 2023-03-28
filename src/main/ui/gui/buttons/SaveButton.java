@@ -4,6 +4,7 @@ import model.GameManager;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 
+import javax.swing.*;
 import java.io.FileNotFoundException;
 
 
@@ -34,9 +35,11 @@ public class SaveButton extends Button {
             jsonWriter.open();
             jsonWriter.write(gm);
             jsonWriter.close();
-            System.out.println("Saved games to " + JSON_STORE);
-        } catch (FileNotFoundException e) {
-            System.out.println("Unable to write to file: " + JSON_STORE);
+        } catch (Exception e) {
+            ImageIcon icon = new ImageIcon("./data/errorSign.png");
+            JOptionPane error = new JOptionPane();
+            error.showMessageDialog(null, "Could not save to " + JSON_STORE,
+                    "ERROR",JOptionPane.ERROR_MESSAGE, icon);
         }
 
     }

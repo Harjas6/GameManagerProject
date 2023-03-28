@@ -47,13 +47,20 @@ public class PopUpAddWindow extends JOptionPane {
 
     // EFFECTS: shows dialog box to take in user input
     private void runWindow() {
+        Game g;
+        ImageIcon icon = new ImageIcon("./data/errorSign.png");
         int option = showConfirmDialog(null, objects, "Create Game", JOptionPane.OK_CANCEL_OPTION);
         if (option == JOptionPane.OK_OPTION) {
-            Game g = new Game(fields.getName().getText(), Double.parseDouble(fields.getHours().getText()),
-                     Double.parseDouble(fields.getDifficulty().getText()),Integer.parseInt(fields.getRank().getText()),
-                     Game.Genre.valueOf(genres.getSelection().getActionCommand()),Double.parseDouble(fields.getPrice().getText()),
-                    isOwned.isSelected());
-            this.gm.addGame(g);
+            try {
+                g = new Game(fields.getName().getText(), Double.parseDouble(fields.getHours().getText()),
+                        Double.parseDouble(fields.getDifficulty().getText()), Integer.parseInt(fields.getRank().getText()),
+                        Game.Genre.valueOf(genres.getSelection().getActionCommand()), Double.parseDouble(fields.getPrice().getText()),
+                        isOwned.isSelected());
+                this.gm.addGame(g);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Not valid input",
+                        "ERROR",JOptionPane.ERROR_MESSAGE, icon);
+            }
         }
     }
 

@@ -4,6 +4,7 @@ import model.Game;
 import model.GameManager;
 import persistence.JsonReader;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -37,8 +38,10 @@ public class LoadButton extends Button {
             temp = jsonReader.read();
             this.gm.addAll(temp);
             System.out.println("Loaded games from " + JSON_STORE);
-        } catch (IOException e) {
-            System.out.println("Unable to read from file: " + JSON_STORE);
+        } catch (Exception e) {
+            ImageIcon icon = new ImageIcon("./data/errorSign.png");
+            JOptionPane.showMessageDialog(null, "Could not load/find file " + JSON_STORE,
+                    "ERROR",JOptionPane.ERROR_MESSAGE, icon);
         }
     }
 }
