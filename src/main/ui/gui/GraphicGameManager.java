@@ -6,6 +6,9 @@ import model.GameManager;
 import javax.swing.*;
 import java.awt.*;
 
+import static model.Game.Genre.*;
+import static model.Game.Genre.SPORT;
+
 
 // Represents a GUI
 public class GraphicGameManager extends JFrame {
@@ -18,8 +21,9 @@ public class GraphicGameManager extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(new Dimension(Toolkit.getDefaultToolkit().getScreenSize()));
         setLayout(new BorderLayout());
-        add(new MenuPanel(this.gm), BorderLayout.SOUTH);
-        add(new MainPanel(this.gm), BorderLayout.CENTER);
+        MainPanel mainPanel = new MainPanel(this.gm);
+        add(new MenuPanel(this.gm, mainPanel), BorderLayout.SOUTH);
+        add(mainPanel, BorderLayout.CENTER);
         add(new ColumnTitlePanel(), BorderLayout.NORTH);
         setVisible(true);
 

@@ -1,13 +1,9 @@
 package ui.gui;
 
 import model.Game;
-import model.Game.Genre.*;
 import model.GameManager;
 
 import javax.swing.*;
-
-import java.awt.*;
-
 
 
 // A pop up window used to take in inputs to make a new game
@@ -15,7 +11,7 @@ public class PopUpAddWindow extends JOptionPane {
 
 
     private Object[] objects;
-    private TextFieldGenerator fields;
+    private AddingTextFieldGenerator fields;
     private JRadioButton sports;
     private JRadioButton shooting;
     private JRadioButton action;
@@ -28,14 +24,12 @@ public class PopUpAddWindow extends JOptionPane {
     private ButtonGroup genres;
     private GameManager gm;
 
-// EFFECTS: Creates a pop up window for users to create a game
+// EFFECTS: Creates a Option Pane window for users to create a game
     public PopUpAddWindow(GameManager gm) {
-        super("Create Game");
         this.gm = gm;
-        setSize(300,300);
         ownedButtons();
         genreButtons();
-        fields = new TextFieldGenerator();
+        fields = new AddingTextFieldGenerator();
         objects = new Object[]{"Name", fields.getName(),
                 "Price", fields.getPrice(), "Difficulty", fields.getDifficulty(),
                 "Rank", fields.getRank(), "Hours", fields.getHours(),
@@ -47,21 +41,32 @@ public class PopUpAddWindow extends JOptionPane {
 
     // EFFECTS: shows dialog box to take in user input
     private void runWindow() {
-        Game g;
-        ImageIcon icon = new ImageIcon("./data/errorSign.png");
-        int option = showConfirmDialog(null, objects, "Create Game", JOptionPane.OK_CANCEL_OPTION);
+        Game newGame;
+        ImageIcon icon = new ImageIcon("./data/images/errorSign.png");
+        ImageIcon add = new ImageIcon("./data/images/addButton.png");
+        ImageIcon check = new ImageIcon("./data/images/checkmark.png");
+        int option = showConfirmDialog(null, objects, "Create Game",
+                JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, add);
         if (option == JOptionPane.OK_OPTION) {
             try {
-                g = new Game(fields.getName().getText(), Double.parseDouble(fields.getHours().getText()),
-                        Double.parseDouble(fields.getDifficulty().getText()), Integer.parseInt(fields.getRank().getText()),
-                        Game.Genre.valueOf(genres.getSelection().getActionCommand()), Double.parseDouble(fields.getPrice().getText()),
-                        isOwned.isSelected());
-                this.gm.addGame(g);
+                newGame = makeGame();
+                this.gm.addGame(newGame);
+                JOptionPane.showMessageDialog(null, "Game has been added", "ADDED",
+                        JOptionPane.INFORMATION_MESSAGE, check);
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Not valid input",
                         "ERROR",JOptionPane.ERROR_MESSAGE, icon);
             }
         }
+    }
+
+    private Game makeGame() {
+        return new Game(fields.getName().getText(), Double.parseDouble(fields.getHours().getText()),
+                Double.parseDouble(fields.getDifficulty().getText()),
+                Integer.parseInt(fields.getRank().getText()),
+                Game.Genre.valueOf(genres.getSelection().getActionCommand()),
+                Double.parseDouble(fields.getPrice().getText()),
+                isOwned.isSelected());
     }
 
     // EFFECTS: makes genre selection buttons

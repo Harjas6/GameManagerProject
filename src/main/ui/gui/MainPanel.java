@@ -10,27 +10,99 @@ import java.awt.*;
 public class MainPanel extends JPanel {
 
 
-private GameManager gm;
+    private GameManager gm;
 
     // EFFECTS: Makes the main Panel with the contents of GameManager
     public MainPanel(GameManager gm) {
         this.gm = gm;
         showGames();
-        setBackground(Color.lightGray);
+        setBackground(Color.LIGHT_GRAY);
         setVisible(true);
-        showGames();
+        setLayout(new GridLayout(7,1));
+
     }
 
     // EFFECTS: show the games on the panel
-    private void showGames() {
+    public void showGames() {
         for (Game g : this.gm.getGameList()) {
-            JPanel panel = printGame();
-            add(panel);
+            JPanel panel = printGame(g);
+            this.add(panel, BorderLayout.AFTER_LAST_LINE);
         }
     }
 
-    // EFFECTS: prints out the game on the screen
-    private JPanel printGame() {
-        return null;
+    // EFFECTS: makes a panel with a game on it
+    private JPanel printGame(Game game) {
+        JPanel gamePanel = new JPanel(new GridLayout(1, 7));
+        gamePanel.setSize(10000000,60);
+        gamePanel.add(generateName(game));
+        gamePanel.add(generateRanking(game));
+        gamePanel.add(generateDifficulty(game));
+        gamePanel.add(generateHours(game));
+        gamePanel.add(generatePrice(game));
+        gamePanel.add(generateGenre(game));
+        gamePanel.add(generateOwned(game));
+        setColorOfLabel(gamePanel);
+        gamePanel.setBackground(Color.LIGHT_GRAY);
+
+        return gamePanel;
     }
+
+    // EFFECTS: sets all labels to color black
+    private void setColorOfLabel(JPanel panel) {
+        Component[] comps = panel.getComponents();
+        for (Component comp : comps) {
+            if (comp instanceof JComponent) {
+                ((JComponent) comp).setForeground(Color.BLACK);
+            }
+        }
+    }
+
+    private JLabel generateOwned(Game game) {
+        String status;
+        if (game.isOwned()) {
+            status = "True";
+        } else {
+            status = "False";
+        }
+        JLabel label = new JLabel(status);
+        label.setHorizontalAlignment(JLabel.CENTER);
+        return label;
+    }
+
+    private JLabel generateGenre(Game game) {
+        JLabel label = new JLabel(game.getGenre().toString());
+        label.setHorizontalAlignment(JLabel.CENTER);
+        return label;
+    }
+
+    private JLabel generatePrice(Game game) {
+        JLabel label = new JLabel(String.valueOf(game.getPrice()));
+        label.setHorizontalAlignment(JLabel.CENTER);
+        return label;
+    }
+
+    private JLabel generateHours(Game game) {
+        JLabel label = new JLabel(String.valueOf(game.getHoursPlayed()));
+        label.setHorizontalAlignment(JLabel.CENTER);
+        return label;
+    }
+
+    private JLabel generateDifficulty(Game game) {
+        JLabel label = new JLabel(String.valueOf(game.getDifficulty()));
+        label.setHorizontalAlignment(JLabel.CENTER);
+        return label;
+    }
+
+    private JLabel generateRanking(Game game) {
+        JLabel label = new JLabel(String.valueOf(game.getRanking()));
+        label.setHorizontalAlignment(JLabel.CENTER);
+        return label;
+    }
+
+    private JLabel generateName(Game game) {
+        JLabel label = new JLabel(game.getName());
+        label.setHorizontalAlignment(JLabel.CENTER);
+        return label;
+    }
+
 }

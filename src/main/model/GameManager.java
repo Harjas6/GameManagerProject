@@ -181,8 +181,27 @@ public class GameManager implements Writable {
     // REQUIRES: list must not be empty, i must be within index range
     // MODIFIES: this
     // EFFECTS: removes game at index i from gameList
-    public void removeGame(int i) {
+    public void removeGameByPosition(int i) {
         gameList.remove(i);
+    }
+
+    public void removeGame(Game game) throws Exception {
+        if (game == null || !gameList.contains(game)) {
+            throw new Exception();
+        }
+        this.gameList.remove(game);
+    }
+
+    // EFFECTS: returns name whose name matches name;
+    public Game getGameByName(String name) {
+        Game result = null;
+        for (Game g : gameList) {
+            if (g.getName().equals(name)) {
+                result = g;
+                break;
+            }
+        }
+        return result;
     }
 
     // REQUIRES: i is within list's index

@@ -426,7 +426,7 @@ public class GameManagerApp {
             System.out.println("Canceling removal");
         } else {
             input = Integer.parseInt(temp) - 1;
-            gameList.removeGame(input);
+            gameList.removeGameByPosition(input);
             System.out.println("Game removed");
             viewList();
         }

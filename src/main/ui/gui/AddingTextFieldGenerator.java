@@ -1,29 +1,20 @@
 package ui.gui;
 
 import javax.swing.*;
-import java.awt.*;
 import java.text.DecimalFormat;
 
 // Generates Text Fields for adding a game
-public class TextFieldGenerator {
+public class AddingTextFieldGenerator {
 
     private JTextField name;
     private JFormattedTextField price;
     private JFormattedTextField difficulty;
     private JFormattedTextField rank;
-    private JRadioButton isOwned;
-    private JRadioButton notOwned;
     private JFormattedTextField hours;
-    private JRadioButton sports;
-    private JRadioButton shooting;
-    private JRadioButton action;
-    private JRadioButton platformer;
-    private JRadioButton openWorld;
-    private JRadioButton rpg;
 
 
     // Creates all text fields with text fields
-    public TextFieldGenerator() {
+    public AddingTextFieldGenerator() {
         initializeFields();
     }
 
@@ -84,39 +75,7 @@ public class TextFieldGenerator {
         return rank;
     }
 
-    public JRadioButton getIsOwned() {
-        return isOwned;
-    }
-
-    public JRadioButton getNotOwned() {
-        return notOwned;
-    }
-
     public JFormattedTextField getHours() {
-        return hours;
-    }
-
-    public JRadioButton getSports() {
-        return sports;
-    }
-
-    public JRadioButton getShooting() {
-        return shooting;
-    }
-
-    public JRadioButton getAction() {
-        return action;
-    }
-
-    public JRadioButton getPlatformer() {
-        return platformer;
-    }
-
-    public JRadioButton getOpenWorld() {
-        return openWorld;
-    }
-
-    public JRadioButton getRpg() {
-        return rpg;
+        return  hours;
     }
 }

@@ -16,10 +16,12 @@ public class MenuPanel extends JPanel {
     private Button saveButton;
     private Button loadButton;
     private GameManager gm;
+    private  MainPanel mainPanel;
 
     // EFFECTS: Creates a new menu panel with associated buttons attached
-    public MenuPanel(GameManager gm) {
+    public MenuPanel(GameManager gm, MainPanel mainPanel) {
         this.gm = gm;
+        this.mainPanel = mainPanel;
         initializeButtons();
         initializeMenuPanel();
 
@@ -27,20 +29,20 @@ public class MenuPanel extends JPanel {
 
     // EFFECTS: sets sizes of panel and color
     private void initializeMenuPanel() {
-        setPreferredSize(new Dimension(50, 50));
+        setPreferredSize(new Dimension(50, 80));
         setVisible(true);
-        setBackground(Color.BLACK);
+        setBackground(Color.WHITE);
     }
 
     // EFFECTS: creates and adds all buttons
     private void initializeButtons() {
-        addButton = new AddButton(gm);
+        addButton = new AddButton(gm, mainPanel);
         this.add(addButton);
-        removeButton = new RemoveButton(gm);
+        removeButton = new RemoveButton(gm, mainPanel);
         this.add(removeButton);
-        saveButton = new SaveButton(gm);
+        saveButton = new SaveButton(gm, mainPanel);
         this.add(saveButton);
-        loadButton = new LoadButton(gm);
+        loadButton = new LoadButton(gm, mainPanel);
         this.add(loadButton);
     }
 

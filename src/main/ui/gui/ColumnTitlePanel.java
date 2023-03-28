@@ -13,8 +13,20 @@ public class ColumnTitlePanel extends JPanel {
         this.setLayout(new GridLayout(1, 7));
         intializeJLabel();
         this.setSize(100, 50);
-        this.setBackground(Color.LIGHT_GRAY);
+        this.setBackground(new Color(180, 180 ,180));
         this.setVisible(true);
+        setColorOfLabel(this);
+
+    }
+
+    // EFFECTS: sets all label colors to white
+    private void setColorOfLabel(JPanel panel) {
+        Component[] comps = panel.getComponents();
+        for (Component comp : comps) {
+            if (comp instanceof JComponent) {
+                ((JComponent) comp).setForeground(Color.BLACK);
+            }
+        }
     }
 
     // EFFECTS: Creates and adds JLabels to panels

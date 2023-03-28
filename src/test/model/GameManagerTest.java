@@ -3,9 +3,6 @@ package model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 import static model.Game.Genre.*;
@@ -94,10 +91,10 @@ public class GameManagerTest {
     }
 
     @Test
-    void testRemoveGame() {
+    void testRemoveGameByPosition() {
         assertTrue(allGames.containGame(actionGame));
         assertEquals(6, allGames.getSize());
-        allGames.removeGame(0);
+        allGames.removeGameByPosition(0);
         assertFalse(allGames.containGame(actionGame));
         assertEquals(5, allGames.getSize());
     }
@@ -238,6 +235,36 @@ public class GameManagerTest {
         empty.addAll(games);
         assertEquals(2, empty.getSize());
 
+    }
+
+    @Test
+    void testGetGamesByName() {
+        assertEquals(null, empty.getGameByName("H"));
+        assertEquals(sportGame, allGames.getGameByName("FIFA 22"));
+        assertEquals(null, allGames.getGameByName("HFHW"));
+    }
+
+    @Test
+    void testRemoveGame()  {
+        try {
+            allGames.removeGame(sportGame);
+            assertFalse(allGames.containGame(sportGame));
+        } catch (Exception e) {
+            fail("Shouldnt' throw");
+        }
+
+        try {
+            empty.removeGame(sportGame);
+            fail("Should've throw");
+        } catch (Exception e) {
+            //Expected
+        }
+        try {
+            allGames.removeGame(null);
+            fail("Should be exception");
+        } catch (Exception e) {
+            //expected
+        }
     }
 
     @Test
@@ -414,7 +441,7 @@ public class GameManagerTest {
                 + "\n\nGame# 2 " + ", Name: God Of War, Price: $90.0, Owned? false\n" +
                 "Genre: Role-playing Game, Hours Played: 100.0, Difficulty Level: 9.0\n" +
                 "Personal Ranking: 1", empty.produceGames());
-        empty.removeGame(1);
+        empty.removeGameByPosition(1);
         assertEquals("\n\nGame# 1 " + ", Name: Uncharted 3, Price: $1.0, Owned? true\n" +
                 "Genre: Action/Adventure Game, Hours Played: 1.0, Difficulty Level: 3.0\n" +
                 "Personal Ranking: 2", empty.produceGames());
