@@ -5,7 +5,6 @@ import ui.gui.MainPanel;
 import ui.gui.PopUpRemoveWindow;
 
 import javax.swing.*;
-import java.awt.*;
 
 // Represents a button that removes games
 public class RemoveButton extends Button {
@@ -26,8 +25,8 @@ public class RemoveButton extends Button {
         removeGame();
         mainPanel.removeAll();
         mainPanel.showGames();
-       mainPanel.revalidate();
-       mainPanel.repaint();
+        mainPanel.revalidate();
+        mainPanel.repaint();
     }
 
     private void removeGame() {

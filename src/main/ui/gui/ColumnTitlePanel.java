@@ -7,13 +7,12 @@ import java.awt.*;
 public class ColumnTitlePanel extends JPanel {
 
 
-
     // EFFECTS: creates a panel with all labels added
     public ColumnTitlePanel() {
         this.setLayout(new GridLayout(1, 7));
         intializeJLabel();
         this.setSize(100, 50);
-        this.setBackground(new Color(180, 180 ,180));
+        this.setBackground(new Color(180, 180, 180));
         this.setVisible(true);
         setColorOfLabel(this);
 
