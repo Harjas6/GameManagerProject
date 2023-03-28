@@ -1,7 +1,6 @@
-package model.comparatorTests;
+package model.comparators;
 
 import model.Game;
-import model.comparators.HoursComparator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -9,14 +8,14 @@ import static model.Game.Genre.*;
 import static model.Game.Genre.SPORT;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class HoursComparatorTest {
+public class PlayedComparatorTest {
     private Game actionGame;
     private Game rpgGame;
     private Game openWorldGame;
     private Game shootingGame;
     private Game platformGame;
     private Game sportGame;
-    private HoursComparator comp;
+    private OwnedComparator comp;
 
     @BeforeEach
     public void runBefore() {
@@ -29,17 +28,17 @@ public class HoursComparatorTest {
         shootingGame = new Game("Call Of Duty", 250, 3,
                 4, SHOOTER, 0, true);
         platformGame = new Game("Rachet and Clank", 48, 1,
-                5, PLATFORMER, 15, false);
+                5, PLATFORMER, 15, true);
         sportGame = new Game("FIFA 22", 48, 0,
                 6, SPORT, 40, true);
-        comp = new HoursComparator();
+        comp = new OwnedComparator();
     }
 
     @Test
     void compareTest() {
         assertEquals(-1, comp.compare(actionGame,rpgGame));
-        assertEquals(1, comp.compare(shootingGame,openWorldGame));
+        assertEquals(1, comp.compare(openWorldGame,shootingGame));
         assertEquals(0, comp.compare(sportGame,platformGame));
     }
-}
 
+}

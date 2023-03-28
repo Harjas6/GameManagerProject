@@ -15,6 +15,7 @@ public class GraphicGameManager extends JFrame {
 
     private GameManager gm;
 
+    // EFFECTS: sets up GUI
     public GraphicGameManager() {
         super("Game Manager");
         this.gm = new GameManager();

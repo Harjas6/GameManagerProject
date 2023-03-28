@@ -27,6 +27,7 @@ public class MenuPanel extends JPanel {
 
     }
 
+    // MODIFIES: this
     // EFFECTS: sets sizes of panel and color
     private void initializeMenuPanel() {
         setPreferredSize(new Dimension(50, 80));
@@ -34,6 +35,7 @@ public class MenuPanel extends JPanel {
         setBackground(Color.WHITE);
     }
 
+    // MODIFIES: this
     // EFFECTS: creates and adds all buttons
     private void initializeButtons() {
         addButton = new AddButton(gm, mainPanel);

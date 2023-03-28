@@ -1,4 +1,4 @@
-package model.persistenceTests;
+package model.persistence;
 
 import model.Game;
 import model.Game.*;

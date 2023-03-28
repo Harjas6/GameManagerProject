@@ -10,7 +10,7 @@ public class ColumnTitlePanel extends JPanel {
     // EFFECTS: creates a panel with all labels added
     public ColumnTitlePanel() {
         this.setLayout(new GridLayout(1, 7));
-        intializeJLabel();
+        intializeJLabels();
         this.setSize(100, 50);
         this.setBackground(new Color(180, 180, 180));
         this.setVisible(true);
@@ -18,6 +18,7 @@ public class ColumnTitlePanel extends JPanel {
 
     }
 
+    // MODIFIES: this
     // EFFECTS: sets all label colors to white
     private void setColorOfLabel(JPanel panel) {
         Component[] comps = panel.getComponents();
@@ -29,7 +30,7 @@ public class ColumnTitlePanel extends JPanel {
     }
 
     // EFFECTS: Creates and adds JLabels to panels
-    private void intializeJLabel() {
+    private void intializeJLabels() {
         JLabel name = new JLabel("Name");
         add(name);
         name.setHorizontalAlignment(JLabel.CENTER);

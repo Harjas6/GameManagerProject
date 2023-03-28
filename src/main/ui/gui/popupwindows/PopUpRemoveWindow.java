@@ -1,4 +1,4 @@
-package ui.gui;
+package ui.gui.popupwindows;
 
 import model.Game;
 import model.GameManager;
@@ -6,7 +6,6 @@ import model.GameManager;
 import javax.swing.*;
 
 // A class that makes a pop up remove window
-
 
 public class PopUpRemoveWindow extends JOptionPane {
     private final GameManager gm;

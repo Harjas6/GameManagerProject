@@ -30,6 +30,7 @@ public class MainPanel extends JPanel {
         }
     }
 
+    // MODFIES: this
     // EFFECTS: makes a panel with a game on it
     private JPanel printGame(Game game) {
         JPanel gamePanel = new JPanel(new GridLayout(1, 7));
@@ -47,6 +48,7 @@ public class MainPanel extends JPanel {
         return gamePanel;
     }
 
+    // MODFIES: this
     // EFFECTS: sets all labels to color black
     private void setColorOfLabel(JPanel panel) {
         Component[] comps = panel.getComponents();
@@ -57,6 +59,8 @@ public class MainPanel extends JPanel {
         }
     }
 
+
+    // EFFECTS: creates label representing games owned status
     private JLabel generateOwned(Game game) {
         String status;
         if (game.isOwned()) {
@@ -69,36 +73,42 @@ public class MainPanel extends JPanel {
         return label;
     }
 
+    // EFFECTS: creates label representing games Genre status
     private JLabel generateGenre(Game game) {
         JLabel label = new JLabel(game.getGenre().toString());
         label.setHorizontalAlignment(JLabel.CENTER);
         return label;
     }
 
+    // EFFECTS: creates label representing games price status
     private JLabel generatePrice(Game game) {
         JLabel label = new JLabel(String.valueOf(game.getPrice()));
         label.setHorizontalAlignment(JLabel.CENTER);
         return label;
     }
 
+    // EFFECTS: creates label representing games hours status
     private JLabel generateHours(Game game) {
         JLabel label = new JLabel(String.valueOf(game.getHoursPlayed()));
         label.setHorizontalAlignment(JLabel.CENTER);
         return label;
     }
 
+    // EFFECTS: creates label representing games difficulty status
     private JLabel generateDifficulty(Game game) {
         JLabel label = new JLabel(String.valueOf(game.getDifficulty()));
         label.setHorizontalAlignment(JLabel.CENTER);
         return label;
     }
 
+    // EFFECTS: creates label representing games ranking status
     private JLabel generateRanking(Game game) {
         JLabel label = new JLabel(String.valueOf(game.getRanking()));
         label.setHorizontalAlignment(JLabel.CENTER);
         return label;
     }
 
+    // EFFECTS: creates label representing games name status
     private JLabel generateName(Game game) {
         JLabel label = new JLabel(game.getName());
         label.setHorizontalAlignment(JLabel.CENTER);

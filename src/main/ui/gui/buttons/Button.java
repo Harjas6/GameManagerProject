@@ -27,7 +27,9 @@ public abstract class Button extends JButton implements ActionListener {
 
     protected abstract void performButtonAction();
 
+
     // REQUIRES: action event source is from a button
+    // MODIFES: gm
     // EFFECTS: performs action specified by button
     @Override
     public void actionPerformed(ActionEvent e) {

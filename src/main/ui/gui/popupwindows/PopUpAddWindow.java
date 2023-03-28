@@ -1,7 +1,8 @@
-package ui.gui;
+package ui.gui.popupwindows;
 
 import model.Game;
 import model.GameManager;
+import ui.gui.AddingTextFieldGenerator;
 
 import javax.swing.*;
 

@@ -2,7 +2,7 @@ package ui.gui.buttons;
 
 import model.GameManager;
 import ui.gui.MainPanel;
-import ui.gui.PopUpRemoveWindow;
+import ui.gui.popupwindows.PopUpRemoveWindow;
 
 import javax.swing.*;
 
@@ -18,7 +18,7 @@ public class RemoveButton extends Button {
         setIcon(TRASH);
     }
 
-
+    // MODIFES: gm
     // EFFECTS: Removes a game from list;
     @Override
     protected void performButtonAction() {
@@ -29,6 +29,8 @@ public class RemoveButton extends Button {
         mainPanel.repaint();
     }
 
+    // MODIFES: gm
+    // EFFECTS: creates a pop up window to remove game
     private void removeGame() {
         new PopUpRemoveWindow(this.gm);
     }

@@ -3,7 +3,7 @@ package ui.gui.buttons;
 
 import model.GameManager;
 import ui.gui.MainPanel;
-import ui.gui.PopUpAddWindow;
+import ui.gui.popupwindows.PopUpAddWindow;
 
 import javax.swing.*;
 
@@ -18,7 +18,7 @@ public class AddButton extends Button {
         setIcon(ADD);
     }
 
-    // MODIFIES: gameManager
+    // MODIFIES: gm
     // EFFECTS: adds game to GameManager
     @Override
     protected void performButtonAction() {
@@ -30,6 +30,8 @@ public class AddButton extends Button {
 
     }
 
+    // MODIFES: gm
+    // EFFECTS: Creates a new window to add game
     private void addGame() {
         new PopUpAddWindow(this.gm);
 
