@@ -14,7 +14,7 @@ public class SaveButton extends Button {
     private static final String JSON_STORE = "./data/gameManager.json";
     private JsonWriter jsonWriter;
 
-    // EFFECTS: creates a button using superclass to save games
+    // EFFECTS: creates a button using superclass to save games and sets Icon to SAVE
     public SaveButton(GameManager gm, MainPanel mainPanel) {
         super("", gm, mainPanel);
         this.jsonWriter = new JsonWriter(JSON_STORE);
@@ -29,7 +29,7 @@ public class SaveButton extends Button {
     }
 
     // MODIFES: gm
-    // EFFECTS: saves games to file
+    // EFFECTS: saves games to JSON_STORE
     private void saveGames() {
         try {
             ImageIcon save = new ImageIcon("./data/images/saveButton.png");

@@ -6,7 +6,7 @@ import model.GameManager;
 import javax.swing.*;
 import java.awt.*;
 
-// Represents that main area where all the contents of Game Manager will be displayed
+// Represents the area where all the contents of Game Manager will be displayed
 public class MainPanel extends JPanel {
 
 
@@ -22,6 +22,7 @@ public class MainPanel extends JPanel {
 
     }
 
+    // MODIFES: this
     // EFFECTS: show the games on the panel
     public void showGames() {
         for (Game g : this.gm.getGameList()) {

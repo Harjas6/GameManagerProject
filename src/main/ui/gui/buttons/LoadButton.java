@@ -1,14 +1,10 @@
 package ui.gui.buttons;
 
-import model.Game;
 import model.GameManager;
 import persistence.JsonReader;
 import ui.gui.MainPanel;
 
 import javax.swing.*;
-import java.io.IOException;
-import java.util.List;
-import java.util.stream.Collectors;
 
 //  Class representing a button that loads game
 public class LoadButton extends Button {
@@ -18,22 +14,19 @@ public class LoadButton extends Button {
     private JsonReader jsonReader;
 
 
-
-    // EFFECTS: Creates a button using the superclasses constructor
+    // EFFECTS: Creates a button using the superclasses constructor and sets Icon to LOAD
     public LoadButton(GameManager gm, MainPanel mainPanel) {
         super("", gm, mainPanel);
         this.jsonReader = new JsonReader(JSON_STORE);
         setIcon(LOAD);
     }
 
-    // MODIFIES: gm
-    // EFFECTS: executes load buttons
+    // MODIFIES: gm, mainpanel
+    // EFFECTS: executes load buttons and displays it
     @Override
     protected void performButtonAction() {
         loadGames();
-        mainPanel.removeAll();
-        mainPanel.showGames();
-        mainPanel.revalidate();
+        reprintGames();
     }
 
     // MODIFIES: gm
@@ -46,11 +39,11 @@ public class LoadButton extends Button {
             this.gm.clearList();
             this.gm.addAll(temp);
             JOptionPane.showMessageDialog(null, "Games have been loaded",
-                    "LOAD",JOptionPane.INFORMATION_MESSAGE,check);
+                    "LOAD", JOptionPane.INFORMATION_MESSAGE, check);
         } catch (Exception e) {
             ImageIcon icon = new ImageIcon("./data/images/errorSign.png");
             JOptionPane.showMessageDialog(null, "Could not load/find file " + JSON_STORE,
-                    "ERROR",JOptionPane.ERROR_MESSAGE, icon);
+                    "ERROR", JOptionPane.ERROR_MESSAGE, icon);
         }
     }
 }

@@ -8,7 +8,7 @@ import javax.swing.*;
 // A class that makes a pop up remove window
 
 public class PopUpRemoveWindow extends JOptionPane {
-    private final GameManager gm;
+    private GameManager gm;
     private JTextField removalField;
     private Object[] message;
 
@@ -22,7 +22,7 @@ public class PopUpRemoveWindow extends JOptionPane {
 
     }
 
-
+    // MODIFIES: gm
     // EFFECTS: shows dialog box to take in user input
     private void runWindow() {
         Game game;

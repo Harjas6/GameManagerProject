@@ -1,13 +1,9 @@
 package ui.gui;
 
-import model.Game;
 import model.GameManager;
 
 import javax.swing.*;
 import java.awt.*;
-
-import static model.Game.Genre.*;
-import static model.Game.Genre.SPORT;
 
 
 // Represents a GUI
@@ -15,7 +11,7 @@ public class GraphicGameManager extends JFrame {
 
     private GameManager gm;
 
-    // EFFECTS: sets up GUI
+    // EFFECTS: Constructs JFrame with components
     public GraphicGameManager() {
         super("Game Manager");
         this.gm = new GameManager();
@@ -25,7 +21,7 @@ public class GraphicGameManager extends JFrame {
         MainPanel mainPanel = new MainPanel(this.gm);
         add(new MenuPanel(this.gm, mainPanel), BorderLayout.SOUTH);
         add(mainPanel, BorderLayout.CENTER);
-        add(new ColumnTitlePanel(), BorderLayout.NORTH);
+        add(new ColumnTitleAndSortButtons(this.gm, mainPanel), BorderLayout.NORTH);
         setVisible(true);
 
     }

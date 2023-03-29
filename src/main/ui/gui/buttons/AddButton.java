@@ -12,21 +12,18 @@ public class AddButton extends Button {
 
     private static final ImageIcon ADD = new ImageIcon("./data/images/addButton.png");
 
-    // EFFECTS: Creates button using superclass
+    // EFFECTS: Creates button using superclass and sets Icon to ADD
     public AddButton(GameManager gm, MainPanel mainPanel) {
         super("", gm, mainPanel);
         setIcon(ADD);
     }
 
-    // MODIFIES: gm
-    // EFFECTS: adds game to GameManager
+    // MODIFIES: gm, main panel
+    // EFFECTS: adds game to GameManager and displays it
     @Override
     protected void performButtonAction() {
         addGame();
-        mainPanel.removeAll();
-        mainPanel.showGames();
-        mainPanel.revalidate();
-        mainPanel.repaint();
+        reprintGames();
 
     }
 

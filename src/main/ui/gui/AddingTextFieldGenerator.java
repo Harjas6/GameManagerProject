@@ -3,7 +3,7 @@ package ui.gui;
 import javax.swing.*;
 import java.text.DecimalFormat;
 
-// Generates Text Fields for adding a game
+// Class that holds all the  Text Fields for adding a game
 public class AddingTextFieldGenerator {
 
     private JTextField name;
@@ -13,12 +13,12 @@ public class AddingTextFieldGenerator {
     private JFormattedTextField hours;
 
 
-    // Creates all text fields with text fields
+    // EFFECTS: Creates all text fields
     public AddingTextFieldGenerator() {
         initializeFields();
     }
 
-    // EFFECTS: makes text fields and radio buttons
+    // EFFECTS: makes text fields
     private void initializeFields() {
         nameField();
         priceField();
@@ -76,6 +76,6 @@ public class AddingTextFieldGenerator {
     }
 
     public JFormattedTextField getHours() {
-        return  hours;
+        return hours;
     }
 }

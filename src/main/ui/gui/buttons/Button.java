@@ -1,8 +1,6 @@
 package ui.gui.buttons;
 
 import model.GameManager;
-import persistence.JsonReader;
-import persistence.JsonWriter;
 import ui.gui.MainPanel;
 
 import javax.swing.*;
@@ -11,7 +9,6 @@ import java.awt.event.ActionListener;
 
 // Abstracts class that represents a button
 public abstract class Button extends JButton implements ActionListener {
-
 
     protected GameManager gm;
     protected  MainPanel mainPanel;
@@ -23,6 +20,15 @@ public abstract class Button extends JButton implements ActionListener {
         this.mainPanel = mainPanel;
         this.addActionListener(this);
         this.setFocusable(false);
+    }
+
+    // MODIFIES: mainPanel
+    // EFFECTS: Prints games to panels
+    protected void reprintGames() {
+        mainPanel.removeAll();
+        mainPanel.showGames();
+        mainPanel.revalidate();
+        mainPanel.repaint();
     }
 
     protected abstract void performButtonAction();

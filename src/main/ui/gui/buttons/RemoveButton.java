@@ -12,22 +12,20 @@ public class RemoveButton extends Button {
     private static final ImageIcon TRASH = new ImageIcon("./data/images/trashCan.png");
 
 
-    // EFFECTS: Uses superclass to create a button
+    // EFFECTS: Uses superclass to create a button and sets Icon to TRASH
     public RemoveButton(GameManager gm, MainPanel mainPanel) {
         super("", gm, mainPanel);
         setIcon(TRASH);
     }
 
-    // MODIFES: gm
-    // EFFECTS: Removes a game from list;
+    // MODIFES: gm, mainPanel
+    // EFFECTS: Removes a game from list; and displays it
     @Override
     protected void performButtonAction() {
         removeGame();
-        mainPanel.removeAll();
-        mainPanel.showGames();
-        mainPanel.revalidate();
-        mainPanel.repaint();
+        reprintGames();
     }
+
 
     // MODIFES: gm
     // EFFECTS: creates a pop up window to remove game

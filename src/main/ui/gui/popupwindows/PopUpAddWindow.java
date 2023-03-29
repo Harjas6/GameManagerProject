@@ -32,14 +32,15 @@ public class PopUpAddWindow extends JOptionPane {
         genreButtons();
         fields = new AddingTextFieldGenerator();
         objects = new Object[]{"Name", fields.getName(),
-                "Price", fields.getPrice(), "Difficulty", fields.getDifficulty(),
-                "Rank", fields.getRank(), "Hours", fields.getHours(),
+                "Price($)", fields.getPrice(), "Difficulty", fields.getDifficulty(),
+                "Rank", fields.getRank(), "Hours(can be decimal)", fields.getHours(),
                 "Genre", action, openWorld, rpg, platformer, shooting, sports, "Owned", isOwned, notOwned};
         this.setVisible(true);
         runWindow();
 
     }
 
+    // MODIFES: gm
     // EFFECTS: shows dialog box to take in user input
     private void runWindow() {
         Game newGame;
@@ -61,6 +62,7 @@ public class PopUpAddWindow extends JOptionPane {
         }
     }
 
+    // EFFECTS: makes a new game from the input
     private Game makeGame() {
         return new Game(fields.getName().getText(), Double.parseDouble(fields.getHours().getText()),
                 Double.parseDouble(fields.getDifficulty().getText()),
@@ -70,7 +72,8 @@ public class PopUpAddWindow extends JOptionPane {
                 isOwned.isSelected());
     }
 
-    // EFFECTS: makes genre selection buttons
+    // MODIFIES: this
+    // EFFECTS: makes genre selection buttons and adds them
     private void genreButtons() {
         genres = new ButtonGroup();
         sports = new JRadioButton("Sports Game");
@@ -93,6 +96,7 @@ public class PopUpAddWindow extends JOptionPane {
         genres.add(sports);
     }
 
+    // MODIFIES: this
     // EFFECTS: Makes owned radio buttons
     private void ownedButtons() {
         owned = new ButtonGroup();
