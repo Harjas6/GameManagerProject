@@ -34,7 +34,7 @@ public class PopUpAddWindow extends JOptionPane {
         objects = new Object[]{"Name", fields.getName(),
                 "Price($)", fields.getPrice(), "Difficulty", fields.getDifficulty(),
                 "Rank", fields.getRank(), "Hours(can be decimal)", fields.getHours(),
-                "Genre", action, openWorld, rpg, platformer, shooting, sports, "Owned", isOwned, notOwned};
+                "Genre", action, openWorld, rpg, platformer, shooting, sports, "Is it Owned?", isOwned, notOwned};
         this.setVisible(true);
         runWindow();
 

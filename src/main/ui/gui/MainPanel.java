@@ -10,11 +10,11 @@ import java.awt.*;
 public class MainPanel extends JPanel {
 
 
-    private GameManager gm;
+    private GameManager gameManager;
 
     // EFFECTS: Makes the main Panel with the contents of GameManager
     public MainPanel(GameManager gm) {
-        this.gm = gm;
+        this.gameManager = gm;
         showGames();
         setBackground(Color.LIGHT_GRAY);
         setVisible(true);
@@ -25,7 +25,7 @@ public class MainPanel extends JPanel {
     // MODIFES: this
     // EFFECTS: show the games on the panel
     public void showGames() {
-        for (Game g : this.gm.getGameList()) {
+        for (Game g : this.gameManager.getGameList()) {
             JPanel panel = printGame(g);
             this.add(panel, BorderLayout.AFTER_LAST_LINE);
         }
