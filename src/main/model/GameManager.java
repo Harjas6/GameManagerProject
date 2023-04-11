@@ -249,7 +249,7 @@ public class GameManager implements Writable {
 
     public void addAll(GameManager list) {
         gameList.addAll(list.getGameList());
-        EventLog.getInstance().logEvent(new Event("Copied all games into this list"));
+        EventLog.getInstance().logEvent(new Event("Added all games into this list"));
     }
 
     // EFFECTS: produces string of all the games with each

@@ -36,7 +36,7 @@ needing to delete and re-enter the game (edit games fields within the list).
 - As a user, when I quit the program, I want to be reminded to save my list to  a file and the choice to.
 - As a user, when I start the application, I want to be given the option to load my saved list from file.
 
-### Instructions for Grader
+## Grading Instructions
 - **Visual component** will be displayed through completing actions below.
 - To add a new game to the Game Manager hit the plus button (**Adding X to Y**).
 - To remove a game, hit the trash can and follow the on-screen prompt 
@@ -47,6 +47,72 @@ needing to delete and re-enter the game (edit games fields within the list).
 - To save hit the floppy disk icon (**Saving state**).
 - To load hit the button with the arrow pointing down (**Loading state**).
 
+### Phase 4: Task 2
+A sample of what would be printed to the console after doing each 
+action once is below. They have been organized by the type of even they are for readabilty.
+
+#### Sorting
+
+Assuming alll sorting buttons were hit left to right as displayed.  
+
+< Date at time of logging >  
+Sorted by Name  
+< Date at time of logging >  
+Sorted by ranking  
+< Date at time of logging >  
+Sorted by difficulty  
+< Date at time of logging >  
+Sorted by Hours  
+< Date at time of logging >  
+Sorted by price  
+< Date at time of logging >  
+Sorted by Genre  
+< Date at time of logging >  
+Sorted by owned  
+
+If you press a sort button a second time or any even numbered time
+(sorting in the reverse priority), you will notice
+the following.    
+
+*Using the name field for example.*
+
+< Date at time of logging >  
+Sorted by Name  
+< Date at time of logging >  
+Sorted by Name reverse
+
+Even though we performed only one event, sorting the 
+list in reverse priority, two things printed out. 
+This is because the reverse sort function sorts the
+list normally by calling the respective sort function 
+and then reverses it, causing two events to be logged 
+in one go. It is not an error.
+
+#### Adding & Removing
+
+< Date at time of logging >  
+Added game SampleGame  
+< Date at time of logging >  
+Removed game named SampleGame
+
+#### Saving & Loading
+Saving has no event logged as it doesn't change the model.  
+
+**Loading** however does, as it creates a new temporary instance of the GameManager 
+with the loaded information and then calls the clearAll function on the main GameManager
+that is displayed on the GUI and then call the addAll method on the primary instance
+which then adds all the temporary GameManagers information into the main GameManager.
+This was done as the Singleton Pattern was not known to me at the time and 
+Java kept creating new instances on its own. Due to this design issues the model does end up getting updated and this 
+is what would print out.
+
+< Date at time of logging >  
+Clears all games in game list  
+< Date at time of logging >  
+Added all games into this list
+
+
+### Phase 4: Task 3
 
 
 ___
