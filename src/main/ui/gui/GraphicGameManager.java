@@ -1,5 +1,7 @@
 package ui.gui;
 
+import model.Event;
+import model.EventLog;
 import model.GameManager;
 
 import javax.swing.*;
@@ -15,7 +17,6 @@ public class GraphicGameManager extends JFrame {
     public GraphicGameManager() {
         super("Game Manager");
         this.gm = new GameManager();
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(new Dimension(Toolkit.getDefaultToolkit().getScreenSize()));
         setLayout(new BorderLayout());
         MainPanel mainPanel = new MainPanel(this.gm);
@@ -23,7 +24,13 @@ public class GraphicGameManager extends JFrame {
         add(mainPanel, BorderLayout.CENTER);
         add(new ColumnTitleAndSortButtons(this.gm, mainPanel), BorderLayout.NORTH);
         setVisible(true);
-
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+            EventLog eventLog = EventLog.getInstance();
+            for (Event e : eventLog) {
+                System.out.println(e);
+            }
+        }));
     }
 
 }

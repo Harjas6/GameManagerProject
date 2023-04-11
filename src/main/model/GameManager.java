@@ -88,6 +88,7 @@ public class GameManager implements Writable {
     // EFFECTS: Sorts list with the cheapest game at the first index
     public void sortByPrice() {
         gameList.sort(new PriceComparator());
+        EventLog.getInstance().logEvent(new Event("Sorted by price"));
     }
 
 
@@ -95,6 +96,7 @@ public class GameManager implements Writable {
     public void sortByPriceReverse() {
         sortByPrice();
         Collections.reverse(gameList);
+        EventLog.getInstance().logEvent(new Event("Sorted by price in reverse"));
     }
 
 
@@ -103,6 +105,7 @@ public class GameManager implements Writable {
     // Also is the genres alphabetical order
     public void sortByGenre() {
         gameList.sort(new GenreComparator());
+        EventLog.getInstance().logEvent(new Event("Sorted by Genre"));
     }
 
     // EFFECTS: Sorts gameList in reverse order of the genre declaration in enumeration
@@ -110,72 +113,84 @@ public class GameManager implements Writable {
     public void sortByGenreReverse() {
         sortByGenre();
         Collections.reverse(gameList);
+        EventLog.getInstance().logEvent(new Event("Sorted by Genre reverse"));
     }
 
 
     // EFFECTS: Sorts gameList in lexicographical order
     public void sortByName() {
         gameList.sort(new NameComparator());
+        EventLog.getInstance().logEvent(new Event("Sorted by Name"));
     }
 
     // EFFECTS: Sorts gameList in reverse lexicographical order
     public void sortByNameReverse() {
         sortByName();
         Collections.reverse(gameList);
+        EventLog.getInstance().logEvent(new Event("Sorted by Name reverse"));
     }
 
 
     // EFFECTS: Sorts gameList with least hours played at first index
     public void sortByHoursPlayed() {
         gameList.sort(new HoursComparator());
+        EventLog.getInstance().logEvent(new Event("Sorted by Hours"));
     }
 
     // EFFECTS: Sorts gameList with least hours played at last index
     public void sortByHoursPlayedReverse() {
         sortByHoursPlayed();
         Collections.reverse(gameList);
+        EventLog.getInstance().logEvent(new Event("Sorted by Hours reverse "));
     }
 
 
     // EFFECTS: Sorts gameList with lowest ranking at first index
     public void sortByRanking() {
         gameList.sort(new RankingComparator());
+        EventLog.getInstance().logEvent(new Event("Sorted by ranking "));
     }
 
     // EFFECTS: Sorts ganmelist with the lowest ranking at the highest index
     public void sortByRankingReverse() {
         sortByRanking();
         Collections.reverse(gameList);
+        EventLog.getInstance().logEvent(new Event("Sorted by ranking reverse"));
     }
 
 
-    // EFFECTS: Sorts gameList with higest difficulty at first index
+    // EFFECTS: Sorts gameList with highest difficulty at first index
     public void sortByDifficulty() {
         gameList.sort(new DifficultyComparator());
+        EventLog.getInstance().logEvent(new Event("Sorted by difficulty"));
     }
 
     // EFFECTS: Sorts gameList with higest difficulty at last index
     public void sortByDifficultyReverse() {
         sortByDifficulty();
         Collections.reverse(gameList);
+        EventLog.getInstance().logEvent(new Event("Sorted by difficulty reverse"));
     }
 
 
     // EFFECTS: Sorts gameList with owned games at first index
     public void sortByOwned() {
         gameList.sort(new OwnedComparator());
+        EventLog.getInstance().logEvent(new Event("Sorted by owned"));
     }
 
     // EFFECTS: Sorts gameList with owned games at last index
     public void sortByOwnedReverse() {
         gameList.sort(new OwnedComparator());
         Collections.reverse(gameList);
+        EventLog.getInstance().logEvent(new Event("Sorted by owned reverse"));
     }
 
     // MODIFIES: this
     // EFFECTS: sets gameList to empty
     public void clearList() {
         gameList.clear();
+        EventLog.getInstance().logEvent(new Event("Clears all games in game list"));
     }
 
     // REQUIRES: list must not be empty, i must be within index range
@@ -183,6 +198,7 @@ public class GameManager implements Writable {
     // EFFECTS: removes game at index i from gameList
     public void removeGameByPosition(int i) {
         gameList.remove(i);
+        EventLog.getInstance().logEvent(new Event("Removed game in position " + i));
     }
 
     public void removeGame(Game game) throws Exception {
@@ -190,6 +206,7 @@ public class GameManager implements Writable {
             throw new Exception();
         }
         this.gameList.remove(game);
+        EventLog.getInstance().logEvent(new Event("Removed game named " + game.getName()));
     }
 
     // EFFECTS: returns name whose name matches name;
@@ -218,6 +235,7 @@ public class GameManager implements Writable {
     // EFFECTS: adds game to end of gameList
     public void addGame(Game game) {
         gameList.add(game);
+        EventLog.getInstance().logEvent(new Event("Added game " + game.getName()));
     }
 
     // EFFECTS: returns true if game is withing gameList, false otherwise
@@ -231,6 +249,7 @@ public class GameManager implements Writable {
 
     public void addAll(GameManager list) {
         gameList.addAll(list.getGameList());
+        EventLog.getInstance().logEvent(new Event("Copied all games into this list"));
     }
 
     // EFFECTS: produces string of all the games with each
@@ -264,7 +283,6 @@ public class GameManager implements Writable {
         for (Game g : gameList) {
             jsonArray.put(g.toJson());
         }
-
         return jsonArray;
     }
 }
