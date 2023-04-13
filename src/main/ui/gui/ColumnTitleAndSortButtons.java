@@ -43,7 +43,7 @@ public class ColumnTitleAndSortButtons extends JPanel {
         add(new SortByNameButton("Name", this.gm, this.mp));
         add(new SortByRankButton("Rank", this.gm, this.mp));
         add(new SortByDifficultyButton("Difficulty", this.gm, this.mp));
-        add(new SortByHoursPlayedButton("Hours Played", this.gm, this.mp));
+        add(new SortByHoursButton("Hours Played", this.gm, this.mp));
         add(new SortByPriceButton("Price", this.gm, this.mp));
         add(new SortByGenreButton("Genre", this.gm, this.mp));
         add(new SortByOwnedButton("Owned?", this.gm, this.mp));

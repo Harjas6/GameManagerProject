@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.util.Scanner;
 
 // Game Manager app
-public class GameManagerApp {
+public class ConsoleGameManagerApp {
 
     private static final String JSON_STORE = "./data/gameManager.json";
     private GameManager gameList;
@@ -19,7 +19,7 @@ public class GameManagerApp {
     private JsonReader jsonReader;
 
     // EFFECTS: Runs app
-    public GameManagerApp() throws FileNotFoundException {
+    public ConsoleGameManagerApp() throws FileNotFoundException {
         runGameManager();
     }
 

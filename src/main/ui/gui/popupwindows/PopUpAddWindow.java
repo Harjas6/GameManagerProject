@@ -2,7 +2,7 @@ package ui.gui.popupwindows;
 
 import model.Game;
 import model.GameManager;
-import ui.gui.AddingTextFieldGenerator;
+import ui.gui.AddGameTextFields;
 
 import javax.swing.*;
 
@@ -11,8 +11,10 @@ import javax.swing.*;
 public class PopUpAddWindow extends JOptionPane {
 
 
-    private Object[] objects;
-    private AddingTextFieldGenerator fields;
+
+    private GameManager gm;
+    private AddGameTextFields fields;
+
     private JRadioButton sports;
     private JRadioButton shooting;
     private JRadioButton action;
@@ -23,18 +25,18 @@ public class PopUpAddWindow extends JOptionPane {
     private JRadioButton notOwned;
     private ButtonGroup owned;
     private ButtonGroup genres;
-    private GameManager gm;
+
+    private ImageIcon icon = new ImageIcon("./data/images/errorSign.png");
+    private ImageIcon add = new ImageIcon("./data/images/addButton.png");
+    private ImageIcon check = new ImageIcon("./data/images/checkmark.png");
+
 
 // EFFECTS: Creates a Option Pane window for users to create a game
     public PopUpAddWindow(GameManager gm) {
         this.gm = gm;
         ownedButtons();
         genreButtons();
-        fields = new AddingTextFieldGenerator();
-        objects = new Object[]{"Name", fields.getName(),
-                "Price($)", fields.getPrice(), "Difficulty", fields.getDifficulty(),
-                "Rank", fields.getRank(), "Hours(can be decimal)", fields.getHours(),
-                "Genre", action, openWorld, rpg, platformer, shooting, sports, "Is it Owned?", isOwned, notOwned};
+        fields = new AddGameTextFields();
         this.setVisible(true);
         runWindow();
 
@@ -44,10 +46,8 @@ public class PopUpAddWindow extends JOptionPane {
     // EFFECTS: shows dialog box to take in user input
     private void runWindow() {
         Game newGame;
-        ImageIcon icon = new ImageIcon("./data/images/errorSign.png");
-        ImageIcon add = new ImageIcon("./data/images/addButton.png");
-        ImageIcon check = new ImageIcon("./data/images/checkmark.png");
-        int option = showConfirmDialog(null, objects, "Create Game",
+        Object[] message = makeMessage();
+        int option = showConfirmDialog(null, message, "Create Game",
                 JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, add);
         if (option == JOptionPane.OK_OPTION) {
             try {
@@ -60,6 +60,13 @@ public class PopUpAddWindow extends JOptionPane {
                         "ERROR",JOptionPane.ERROR_MESSAGE, icon);
             }
         }
+    }
+
+    private Object[] makeMessage() {
+        return new Object[]{"Name", fields.getName(),
+                "Price($)", fields.getPrice(), "Difficulty", fields.getDifficulty(),
+                "Rank", fields.getRank(), "Hours(can be decimal)", fields.getHours(),
+                "Genre", action, openWorld, rpg, platformer, shooting, sports, "Is it Owned?", isOwned, notOwned};
     }
 
     // EFFECTS: makes a new game from the input

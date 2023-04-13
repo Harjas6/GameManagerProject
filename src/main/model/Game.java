@@ -22,7 +22,7 @@ public class Game implements Writable {
     private double price;
     private boolean owned;
 
-    // REQUIRES: hoursPlayed to be >=0, difficukty to be [0,10], ranking > 0, price > 0
+    // REQUIRES: hoursPlayed to be >=0, difficulty to be [0,10], ranking > 0, price > 0
     // MODIFIES: this
     // EFFECTS: creates game with each parameter being assigned to its matching field.
     public Game(String name, double hoursPlayed, double difficulty, int ranking,

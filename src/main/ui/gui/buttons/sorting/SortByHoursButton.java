@@ -6,12 +6,12 @@ import ui.gui.buttons.Button;
 
 // Class representing a button that sorts by hours played
 
-public class SortByHoursPlayedButton extends Button {
+public class SortByHoursButton extends Button {
 
     boolean sorted;
 
     // EFFECTS creates a new SortByHoursPlayedButton using superclasses constructor and setting fields
-    public SortByHoursPlayedButton(String text, GameManager gm, MainPanel mainPanel) {
+    public SortByHoursButton(String text, GameManager gm, MainPanel mainPanel) {
         super(text, gm, mainPanel);
         this.sorted = false;
 

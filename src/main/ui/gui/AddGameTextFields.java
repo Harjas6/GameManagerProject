@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.text.DecimalFormat;
 
 // Class that holds all the  Text Fields for adding a game
-public class AddingTextFieldGenerator {
+public class AddGameTextFields {
 
     private JTextField name;
     private JFormattedTextField price;
@@ -14,7 +14,7 @@ public class AddingTextFieldGenerator {
 
 
     // EFFECTS: Creates all text fields
-    public AddingTextFieldGenerator() {
+    public AddGameTextFields() {
         initializeFields();
     }
 

@@ -10,13 +10,14 @@ import javax.swing.*;
 public class PopUpRemoveWindow extends JOptionPane {
     private GameManager gm;
     private JTextField removalField;
-    private Object[] message;
+    private ImageIcon error = new ImageIcon("./data/images/errorSign.png");
+    private ImageIcon trash = new ImageIcon("./data/images/trashCan.png");
+    private ImageIcon check = new ImageIcon("./data/images/checkmark.png");
 
     // EFFECTS: Creates a Option Pane window for users to create a game
     public PopUpRemoveWindow(GameManager gm) {
         this.gm = gm;
         removalField = new JTextField();
-        message = new Object[]{"Type in name of game to remove", removalField};
         this.setVisible(true);
         runWindow();
 
@@ -26,9 +27,7 @@ public class PopUpRemoveWindow extends JOptionPane {
     // EFFECTS: shows dialog box to take in user input
     private void runWindow() {
         Game game;
-        ImageIcon error = new ImageIcon("./data/images/errorSign.png");
-        ImageIcon trash = new ImageIcon("./data/images/trashCan.png");
-        ImageIcon check = new ImageIcon("./data/images/checkmark.png");
+        Object[] message = new Object[]{"Type in name of game to remove", removalField};
         int option = showConfirmDialog(null, message, "Delete Game",
                 JOptionPane.OK_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE,trash);
         game = this.gm.getGameByName(removalField.getText());
