@@ -8,7 +8,9 @@ import javax.swing.*;
 // A class that makes a pop up remove window
 
 public class PopUpRemoveWindow extends JOptionPane {
+
     private GameManager gm;
+
     private JTextField removalField;
     private ImageIcon error = new ImageIcon("./data/images/errorSign.png");
     private ImageIcon trash = new ImageIcon("./data/images/trashCan.png");
