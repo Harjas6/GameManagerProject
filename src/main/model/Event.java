@@ -5,7 +5,7 @@ import java.util.Date;
 
 
 /**
- * system ev ent.
+ * Represents an system event.
  */
 public class Event {
     private static final int HASH_CONSTANT = 13;
