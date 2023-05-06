@@ -13,7 +13,6 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.stream.Stream;
 
-// INSPIRED/MODELLED FROM JSON SERIALIZATION DEMO
 
 // Represents a reader that reads GameManager from JSON data stored in file
 public class JsonReader {

@@ -7,7 +7,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 
-// INSPIRED/MODELLED FROM JSON SERIALIZATION DEMO
 
 // Represents a writer that writes JSON representation of GameManager to file
 public class JsonWriter {

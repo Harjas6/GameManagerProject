@@ -275,7 +275,6 @@ public class GameManager implements Writable {
         return json;
     }
 
-    // INSPIRED/MODELLED FROM JSON SERIALIZATION DEMO
     // EFFECTS: returns games in this game manager as a JSON array
     private JSONArray gamesToJson() {
         JSONArray jsonArray = new JSONArray();

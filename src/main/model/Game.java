@@ -129,8 +129,7 @@ public class Game implements Writable {
         this.owned = !this.owned;
     }
 
-    // INSPIRED/MODELLED FROM JSON SERIALIZATION DEMO
-    // EFFECTS: Makes this a json obje
+    // EFFECTS: Makes this a json object
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
