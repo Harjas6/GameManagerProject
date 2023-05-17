@@ -1,20 +1,14 @@
 
 # Game Manager
 
-### What will this application do?
+### What does this application do?
 
-This application will be able to log the games a user has inputs and track the
-hours spent on each game through *manual* updates as well as store details about the
-game's. It can also tell you what games you are able to buy according to the users budget and
-it can also derive average values for the price/difficulty/hours played of each game.
+The graphic version of this application allows you to add and remove games with details about their hours played,
+personal ranking, difficulty, price, and various other fields. It then also allows you to sort by these fields. You can also save or load 
+a list of the games you have added.
 
-### Why is this project of interest to you?
-
-This is of interest to me as I always have wanted to see/compare how many hours
-I have spent on game as in game timers either do not exist or can be inaccurate for games
-sometimes. I also wanted a way to track/manage games I have or want to get
-so this app will help me with that, especially track money spent. 
-
+The console version of this app allows you do all the above, alongside find games under a inputted budget, 
+find the avergae price or diffuculty of games, and change the values of the games after adding them.
 
 ### Instructions for Use of GUI
 - To add a new game to the Game Manager hit the plus button.
@@ -24,13 +18,22 @@ so this app will help me with that, especially track money spent.
 - To save hit the floppy disk icon.
 - To load hit the button with the arrow pointing down.
 
+
+### Why did I choose to make this project?
+
+This is of interest to me as I always have wanted to see/compare how many hours
+I have spent on game as in game timers either do not exist or can be inaccurate for certain games.\
+I also wanted a way to track/manage games I have or want to get as I tend to get lost in a backlog of games
+I would like to play eventually, so this app will help me with that. 
+
+
 ## Reflection
 
 One main thing I would change is setting clear boundaries from the beginning on what I will
-implement in the final project. The lack of this resulted in add many more features
-to the console version of the app, but not having the time to implement them for the `gui`.  
+implement in the final project. The lack of this resulted in adding many more features 
+to the console version of the app as I thought them up, but not having the time to implement them for the `gui`.  
 
-Reflecting on my project and diagram there are certain design choices
+Reflecting on my project and UML diagram there are certain design choices
 I would reconsider and change with the knowledge I have now. 
 A glaring issue I can see through the UML diagram is how
 the Singleton Pattern would have been useful for `GameManager` class.
@@ -50,9 +53,8 @@ This results in cleaner and more readable code, while also ensuring
 the object being manipulated is always the correct one.
 
 A disadvantage is if I wanted to expand this to have multiple 
-`GameManager`'s active at once - which was the original plan for this project
-if more time was available - the Singleton Pattern would not allow for that
-as it restricts you to one singular instance.  
+`GameManager`'s active at once - which was the original plan for this project - 
+the Singleton Pattern would not allow for thatas it restricts you to one singular instance.  
 Essentially, this refactoring has all the standard advantages and 
 disadvantages to employing the Singleton Pattern.
 
